@@ -135,4 +135,26 @@ public class MainView extends JFrame {
         setMenuBarEnabled();
         setTableEnabled();
     }
+
+    // Getters
+
+    public JTabbedPane getTabbedPane() {
+        return tabbedPane;
+    }
+
+    public JLabel getUsernameLabel() {
+        return usernameLabel;
+    }
+
+    public JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public JButton getRegisterButton() {
+        return registerButton;
+    }
+
+    public TableView getTableView() {
+        return tableView;
+    }
 }
