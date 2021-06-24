@@ -38,7 +38,8 @@ public class Model implements TableModel {
         service = new Service(response -> {
             flats = response.getFlats();
         }, response -> {
-            JOptionPane.showInputDialog(response.getRequestText());
+            JOptionPane.showMessageDialog(view,response.getRequestText());
+            if (response.getCode() == 244) view.setLoginMode(true);
         });
     }
 
@@ -172,6 +173,14 @@ public class Model implements TableModel {
     @Override
     public void removeTableModelListener(TableModelListener l) {
 
+    }
+
+    public void login(String login, String password)  {
+        try {
+            service.login(login, password);
+        } catch (LimitOfReconnectionsException exception) {
+            exception.printStackTrace();
+        }
     }
 }
 
