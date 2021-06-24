@@ -32,7 +32,8 @@ public class LoginController {
     private void login() {
         String login = view.getLoginTextField().getText();
         String password = view.getPasswordTextField().getText();
-        model.login(login,password);
+        if (view.getLoginMode().equals(LoginMode.LOGIN)) model.login(login,password);
+        else model.register(login,password);
         view.dispose();
     }
 }

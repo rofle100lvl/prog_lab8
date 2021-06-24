@@ -4,6 +4,7 @@ import presention.Model;
 import presention.add.AddController;
 import presention.add.AddView;
 import presention.login.LoginController;
+import presention.login.LoginMode;
 import presention.login.LoginView;
 import presention.remove.RemoveController;
 import presention.remove.RemoveView;
@@ -34,8 +35,17 @@ public class MainController {
                     login();
                 }
             });
+            view.getRegisterButton().addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    super.mouseReleased(e);
+                    register();
+                }
+            });
         });
     }
+
+
 
     public void menuItemDidSelect(ActionEvent e) {
         if ("Remove".equals(e.getActionCommand())) {
@@ -54,7 +64,13 @@ public class MainController {
     }
 
     private void login() {
-        LoginView loginView = new LoginView();
+        LoginView loginView = new LoginView(LoginMode.LOGIN);
+        LoginController loginController = new LoginController(loginView, model);
+        loginController.presentView();
+    }
+
+    private void register() {
+        LoginView loginView = new LoginView(LoginMode.REGISTER);
         LoginController loginController = new LoginController(loginView, model);
         loginController.presentView();
     }

@@ -182,5 +182,13 @@ public class Model implements TableModel {
             exception.printStackTrace();
         }
     }
+
+    public void register(String login, String password) {
+        try {
+            service.register(login, password);
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
+    }
 }
 

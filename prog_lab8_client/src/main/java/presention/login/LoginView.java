@@ -7,13 +7,18 @@ public class LoginView extends JFrame {
     private JTextField loginTextField;
     private JTextField passwordTextField;
     private JButton button;
+    private LoginMode loginMode;
+
+    public LoginView(LoginMode loginMode) throws HeadlessException {
+        this.loginMode = loginMode;
+    }
 
     public void init() {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Login");
+        setTitle(loginMode.equals(LoginMode.LOGIN) ? "Login" : "Register");
 
         loginTextField = new JTextField(10);
-        passwordTextField = new JTextField(10);
+        passwordTextField = new JPasswordField(10);
         button = new JButton("Apply");
 
         setLayout(new GridBagLayout());
@@ -44,6 +49,10 @@ public class LoginView extends JFrame {
     // Getteer
     public JTextField getLoginTextField() {
         return loginTextField;
+    }
+
+    public LoginMode getLoginMode() {
+        return loginMode;
     }
 
     public JTextField getPasswordTextField() {
