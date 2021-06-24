@@ -50,8 +50,6 @@ public class MainView extends JFrame {
         JMenu editMenu = new JMenu("Edit Collection");
         JMenuItem addMenuItem = new JMenuItem("Add");
         addMenuItem.addActionListener(listener);
-        JMenuItem addIfMinMenuItem = new JMenuItem("Add if min");
-        addIfMinMenuItem.addActionListener(listener);
         JMenuItem updateMenuItem = new JMenuItem("Update");
         updateMenuItem.addActionListener(listener);
         JMenuItem remove = new JMenuItem("Remove");
@@ -60,7 +58,6 @@ public class MainView extends JFrame {
         clearMenuItem.addActionListener(listener);
 
         editMenu.add(addMenuItem);
-        editMenu.add(addIfMinMenuItem);
         editMenu.addSeparator();
         editMenu.add(updateMenuItem);
         editMenu.addSeparator();
