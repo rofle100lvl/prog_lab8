@@ -6,6 +6,8 @@ import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainView extends JFrame {
     private JTabbedPane tabbedPane;
@@ -13,6 +15,8 @@ public class MainView extends JFrame {
     private JLabel usernameLabel;
     private JButton loginButton;
     private JButton registerButton;
+
+    private TableView tableView;
 
     private boolean isLogin = false;
 
@@ -34,7 +38,7 @@ public class MainView extends JFrame {
         tabbedPane = new JTabbedPane();
 
         // Add table tab
-        TableView tableView = new TableView();
+        tableView = new TableView();
         tableView.init(model);
         tabbedPane.add("Table presentation", tableView);
 
@@ -93,6 +97,9 @@ public class MainView extends JFrame {
 
         menuBar.add(otherMenu);
 
+        setMenuBarEnabled();
+        setTableEnabled();
+
         add(menuBar, BorderLayout.NORTH);
     }
 
@@ -110,5 +117,45 @@ public class MainView extends JFrame {
         panel.add(usernameLabel);
         panel.add(loginButton);
         panel.add(registerButton);
+    }
+
+    public void setMenuBarEnabled() {
+        for (MenuElement subElement : menuBar.getSubElements()) {
+            ((JMenu) subElement).setEnabled(isLogin);
+        }
+    }
+
+    public void setTableEnabled() {
+        if (isLogin) tableView.loginMode();
+        else tableView.logoutMode();
+    }
+
+    public void setLoginMode(boolean login) {
+        System.out.println(1);
+        isLogin = login;
+        setMenuBarEnabled();
+        setTableEnabled();
+    }
+
+    // Getters
+
+    public JTabbedPane getTabbedPane() {
+        return tabbedPane;
+    }
+
+    public JLabel getUsernameLabel() {
+        return usernameLabel;
+    }
+
+    public JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public JButton getRegisterButton() {
+        return registerButton;
+    }
+
+    public TableView getTableView() {
+        return tableView;
     }
 }

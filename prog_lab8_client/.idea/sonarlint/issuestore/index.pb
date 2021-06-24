@@ -75,11 +75,3 @@ Y
 )src/main/java/presention/add/AddView.java,e\0\e05c4c5feb6c9fddf1b585326d936be4c56ea8e1
 j
 :src/main/java/commandDescriptions/AddIfMaxDescription.java,4\8\48239fe19afddc1bcefd0747b355d6e86d275de0
-O
-src/main/java/utils/Consts.java,d\c\dcdf0ea93a5445083f046b3e3a86c1b51402998e
-[
-+src/main/java/presention/main/MainView.java,6\0\60bea0a2dbe0c410823922e66ede5798ba9076fe
-R
-"src/main/java/utils/Validator.java,a\a\aab608155111026f41f35924cb4892afe0e8a219
-G
-src/main/java/Main.java,e\4\e44a8606ce010ad9b89aafdfcee2ab49afbf6d10

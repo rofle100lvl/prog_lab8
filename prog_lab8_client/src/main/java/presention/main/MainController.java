@@ -3,6 +3,9 @@ package presention.main;
 import presention.Model;
 import presention.add.AddController;
 import presention.add.AddView;
+import presention.login.LoginController;
+import presention.login.LoginMode;
+import presention.login.LoginView;
 import presention.remove.RemoveController;
 import presention.remove.RemoveView;
 import presention.update.UpdateController;
@@ -10,6 +13,8 @@ import presention.update.UpdateView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainController {
     private MainView view;
@@ -21,8 +26,26 @@ public class MainController {
     }
 
     public void presentView() {
-        SwingUtilities.invokeLater(() -> view.init(this::menuItemDidSelect, model));
+        SwingUtilities.invokeLater(() -> {
+            view.init(this::menuItemDidSelect, model);
+            view.getLoginButton().addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    super.mouseReleased(e);
+                    login();
+                }
+            });
+            view.getRegisterButton().addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    super.mouseReleased(e);
+                    register();
+                }
+            });
+        });
     }
+
+
 
     public void menuItemDidSelect(ActionEvent e) {
         if ("Remove".equals(e.getActionCommand())) {
@@ -38,5 +61,17 @@ public class MainController {
             UpdateController controller = new UpdateController(addView, model);
             controller.presentView();
         }
+    }
+
+    private void login() {
+        LoginView loginView = new LoginView(LoginMode.LOGIN);
+        LoginController loginController = new LoginController(loginView, model);
+        loginController.presentView();
+    }
+
+    private void register() {
+        LoginView loginView = new LoginView(LoginMode.REGISTER);
+        LoginController loginController = new LoginController(loginView, model);
+        loginController.presentView();
     }
 }
