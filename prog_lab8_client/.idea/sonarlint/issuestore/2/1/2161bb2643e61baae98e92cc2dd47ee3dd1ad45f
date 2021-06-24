@@ -1,7 +1,0 @@
-
-o
-java:S2095"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(°àôºûÿÿÿÿ8¢òÈÚ£/
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Ù½¨ùÿÿÿÿ8²òÈÚ£/
-\
-java:S1118	":Add a private constructor to hide the implicit public one.(†ÅÖ‚ÿÿÿÿÿ8ÃòÈÚ£/
-U	java:S106#"9Replace this use of System.out or System.err by a logger.(¶®’Û8ËòÈÚ£/

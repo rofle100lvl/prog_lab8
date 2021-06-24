@@ -1,13 +1,5 @@
 
 7
 java:S1220""Move this file to a named package.8¢ÄŸÚ£/
-^
-java:S1128"<Remove this unused import 'com.formdev.flatlaf.FlatDarkLaf'.(ÄÝÓäûÿÿÿÿ8£ÄŸÚ£/
-[
-java:S1128"?Remove this unused import 'com.formdev.flatlaf.FlatDarculaLaf'.(´á‚I8£ÄŸÚ£/
-\
-java:S1128"@Remove this unused import 'com.formdev.flatlaf.FlatIntelliJLaf'.(šÉË@8£ÄŸÚ£/
-_
-java:S1128"=Remove this unused import 'com.formdev.flatlaf.FlatLightLaf'.(Äªóÿýÿÿÿÿ8£ÄŸÚ£/
-W
-java:S1144"5Remove this unused private "createAndShowGUI" method.(ì˜‚úÿÿÿÿ8²ÄŸÚ£/
+N
+java:S1128"3Remove this unused import 'presention.add.AddView'.(‘†µ…8Ô˜¦ñ£/
