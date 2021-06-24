@@ -3,8 +3,6 @@ package presention.main;
 import presention.tablePresentation.TableView;
 
 import javax.swing.*;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -56,10 +54,8 @@ public class MainView extends JFrame {
         addIfMinMenuItem.addActionListener(listener);
         JMenuItem updateMenuItem = new JMenuItem("Update");
         updateMenuItem.addActionListener(listener);
-        JMenuItem removeByIdMenuItem = new JMenuItem("Remove by ID");
-        removeByIdMenuItem.addActionListener(listener);
-        JMenuItem removeAtMenuItem = new JMenuItem("Remove at...");
-        removeAtMenuItem.addActionListener(listener);
+        JMenuItem remove = new JMenuItem("Remove");
+        remove.addActionListener(listener);
         JMenuItem clearMenuItem = new JMenuItem("Clear");
         clearMenuItem.addActionListener(listener);
 
@@ -68,8 +64,7 @@ public class MainView extends JFrame {
         editMenu.addSeparator();
         editMenu.add(updateMenuItem);
         editMenu.addSeparator();
-        editMenu.add(removeByIdMenuItem);
-        editMenu.add(removeAtMenuItem);
+        editMenu.add(remove);
         editMenu.addSeparator();
         editMenu.add(clearMenuItem);
 

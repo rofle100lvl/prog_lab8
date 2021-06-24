@@ -2,7 +2,6 @@ package presention;
 
 import commandDescriptions.*;
 import exceptions.LimitOfReconnectionsException;
-import model.Coordinates;
 import model.Flat;
 import model.Furnish;
 import model.House;
@@ -17,50 +16,26 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class Model implements TableModel {
     private ArrayList<Flat> flats = new ArrayList<>();
-    private Connector connector = ConnectorFabric.getConnector();
+    private Connector connector;
     private MainView view;
     private Response serverResponse;
 
     {
-        connector.setUserLogin("login");
-        connector.setUserPassword("pass");
-        SwingUtilities.invokeLater(() -> {
-            try {
-                connector.send(new LoginCommandDescription());
-                while (flats == null || flats.size() == 0) {
-                    flats = receive();
-                }
-                view.repaint();
-
-            } catch (LimitOfReconnectionsException | IOException limitOfReconnectionsException) {
-                limitOfReconnectionsException.printStackTrace();
-            }
-        });
+        flats.add(new Flat());
+        flats.add(new Flat());
+        flats.add(new Flat());
+        flats.add(new Flat());
     }
 
     public Model(MainView view) {
         this.view = view;
     }
-
-    public ArrayList<Flat> receive() throws LimitOfReconnectionsException, IOException {
-        serverResponse = connector.receive();
-        if (serverResponse != null){
-            serverResponse.printResponse();
-            if (serverResponse.getCode() == 200){
-                System.out.println(serverResponse.getFlats());
-                return serverResponse.getFlats();
-            }
-        }
-        return null;
-    }
-
 
     @Override
     public int getRowCount() {
@@ -231,14 +206,6 @@ public class Model implements TableModel {
                         .collect(Collectors.joining("\n")));
     }
 
-    public Response head() {
-
-        if (flats.isEmpty()) {
-            return new Response(204, Consts.emptyCollection);
-        }
-        return new Response(200, flats.get(0).niceToString());
-    }
-
     public Response getFieldDescendingHouse() {
         return new Response(201, flats.stream()
                 .map(Flat::getHouse)
@@ -253,17 +220,6 @@ public class Model implements TableModel {
         return new Response(200, uniquePrice.stream()
                 .map(Object::toString)
                 .collect(Collectors.joining(", ")));
-    }
-
-    public Response show() {
-            if (flats.isEmpty()) return new Response(204, Consts.emptyCollection);
-            return new Response(200, flats.stream()
-                    .map(Flat::niceToString)
-                    .collect(Collectors.joining("\n")));
-    }
-
-    public ArrayList<Flat> getFlats() {
-        return flats;
     }
 }
 
