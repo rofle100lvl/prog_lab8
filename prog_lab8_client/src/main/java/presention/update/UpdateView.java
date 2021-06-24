@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -49,7 +50,7 @@ public class UpdateView extends JFrame {
         houseNumberOfFloorsTextField = new JTextField(10);
         houseNumberOfFlatsOnFloorTextField = new JTextField(10);
 
-        Map<String, JComponent> stringJComponentMap = new HashMap<>();
+        Map<String, JComponent> stringJComponentMap = new LinkedHashMap<>();
         stringJComponentMap.put("Id:", idTextField);
         stringJComponentMap.put("Name:", nameTextField);
         stringJComponentMap.put("X Coordinate:", xCoordTextField);
