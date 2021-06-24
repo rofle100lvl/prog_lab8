@@ -10,9 +10,13 @@ public class Main {
     public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
         UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 
-        MainView view = new MainView();
-        Model model = new Model(view);
-        MainController controller = new MainController(view, model);
-        controller.presentView();
+//        MainView view = new MainView();
+//        Model model = new Model(view);
+//        MainController controller = new MainController(view, model);
+//        controller.presentView();
+
+        SwingUtilities.invokeLater(() -> {
+            new AddView().init();
+        });
     }
 }
