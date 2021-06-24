@@ -1,5 +1,6 @@
 package presention;
 
+import Services.Service;
 import commandDescriptions.*;
 import exceptions.LimitOfReconnectionsException;
 import model.Flat;
@@ -22,19 +23,23 @@ import java.util.stream.Collectors;
 
 public class Model implements TableModel {
     private ArrayList<Flat> flats = new ArrayList<>();
-    private Connector connector;
     private MainView view;
-    private Response serverResponse;
+    private Service service;
 
-    {
-        flats.add(new Flat());
-        flats.add(new Flat());
-        flats.add(new Flat());
-        flats.add(new Flat());
-    }
+//    {
+//        flats.add(new Flat());
+//        flats.add(new Flat());
+//        flats.add(new Flat());
+//        flats.add(new Flat());
+//    }
 
     public Model(MainView view) {
         this.view = view;
+        service = new Service(response -> {
+            flats = response.getFlats();
+        }, response -> {
+            JOptionPane.showInputDialog(response.getRequestText());
+        });
     }
 
     @Override
@@ -167,59 +172,6 @@ public class Model implements TableModel {
     @Override
     public void removeTableModelListener(TableModelListener l) {
 
-    }
-
-    public void add(Flat flat) throws LimitOfReconnectionsException {
-        connector.send(new AddDescription(flat));
-    }
-
-    public void clear() throws LimitOfReconnectionsException {
-        connector.send(new ClearDescription());
-    }
-
-    public void update(Flat flat, int id) throws LimitOfReconnectionsException {
-        connector.send(new UpdateIdDescription(flat, id));
-    }
-
-    public void remove_id(int id) throws LimitOfReconnectionsException {
-        connector.send(new RemoveByIdDescription(id));
-    }
-
-    public void addIfMax(Flat flat) throws LimitOfReconnectionsException {
-        connector.send(new AddIfMaxDescription(flat));
-    }
-
-    public void remove_head() throws LimitOfReconnectionsException {
-        connector.send(new RemoveHeadDescription());
-    }
-
-    public void setFlats(ArrayList<Flat> flats) {
-        this.flats = flats;
-    }
-
-    public Response filterLessThanNumberOfRooms(int numberOfRooms) {
-        if (flats.isEmpty()) return new Response(204, Consts.emptyCollection);
-        return new Response(200,
-                flats.stream()
-                        .filter(x -> x.getNumberOfRooms() < numberOfRooms)
-                        .map(Flat::niceToString)
-                        .collect(Collectors.joining("\n")));
-    }
-
-    public Response getFieldDescendingHouse() {
-        return new Response(201, flats.stream()
-                .map(Flat::getHouse)
-                .map(House::toString)
-                .collect(Collectors.joining("\n")));
-    }
-
-    public Response getUniquePrice() {
-        HashSet<Integer> uniquePrice = new HashSet<>();
-        flats.stream()
-                .forEach(flat -> uniquePrice.add(flat.getPrice()));
-        return new Response(200, uniquePrice.stream()
-                .map(Object::toString)
-                .collect(Collectors.joining(", ")));
     }
 }
 
