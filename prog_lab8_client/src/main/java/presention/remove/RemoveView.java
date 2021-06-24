@@ -3,18 +3,19 @@ package presention.remove;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class RemoveView extends JFrame {
     public static int REMOVE_AT = 0;
     public static int REMOVE_BY_ID = 1;
-    private int type;
+    private RemoveMode mode;
     private JTextField indexTextField;
     private JButton button;
     private JLabel label;
 
     public RemoveView() {
         super();
-        this.type = REMOVE_AT;
+        this.mode = RemoveMode.REMOVE_AT;
     }
 
     public void init(ActionListener listener) {
@@ -29,25 +30,20 @@ public class RemoveView extends JFrame {
         constraints.insets = new Insets(10, 10, 5, 10);
         constraints.gridx = 0;
         constraints.gridy = 0;
-        add(new JLabel("Mode"), constraints);
+        add(new JLabel("Mode:"), constraints);
 
         constraints.insets = new Insets(5, 10, 5, 10);
         constraints.gridx = 1;
         constraints.gridy = 0;
-        JComboBox<String> comp = new JComboBox<>(new String[]{"Remove at...", "Remove by ID"});
+        JComboBox<RemoveMode> comp = new JComboBox<>(RemoveMode.values());
         comp.addItemListener(e -> {
-            if (e.getItem().equals("Remove at...")) {
-                type = REMOVE_AT;
-            } else {
-                type = REMOVE_BY_ID;
-            }
-            setTextByType();
+            setMode((RemoveMode) e.getItem());
         });
         add(comp, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
-        label = new JLabel("At:");
+        label = new JLabel();
         add(label, constraints);
 
         constraints.gridx = 1;
@@ -63,6 +59,8 @@ public class RemoveView extends JFrame {
         button.addActionListener(listener);
         add(button, constraints);
 
+        setMode((RemoveMode) Objects.requireNonNull(comp.getSelectedItem()));
+
         setMinimumSize(layout.minimumLayoutSize(getContentPane()));
 
         pack();
@@ -73,7 +71,8 @@ public class RemoveView extends JFrame {
         return indexTextField.getText();
     }
 
-    public void setTextByType() {
-        label.setText(type == REMOVE_AT ? "At:" : "Id:");
+    private void setMode(RemoveMode removeMode) {
+        mode = removeMode;
+        label.setText(removeMode.equals(RemoveMode.REMOVE_AT) ? "At:" : "Id:");
     }
 }
