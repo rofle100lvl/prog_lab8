@@ -1,0 +1,19 @@
+
+Q
+java:S1128"8Remove this unused import 'javax.swing.event.MenuEvent'.(Ô¾ùþûÿÿÿÿ
+T
+java:S1128";Remove this unused import 'javax.swing.event.MenuListener'.(ÌïÅºúÿÿÿÿ
+s
+java:S1450"ZRemove the "loginButton" field and declare it as a local variable in the relevant methods.(¢ÏÃöýÿÿÿÿ
+o
+java:S1450"VRemove the "menuBar" field and declare it as a local variable in the relevant methods.(ëùÐ³ûÿÿÿÿ
+v
+java:S1450"]Remove the "registerButton" field and declare it as a local variable in the relevant methods.(¯ž¥“ýÿÿÿÿ
+r
+java:S1450"YRemove the "tabbedPane" field and declare it as a local variable in the relevant methods.(ÖÁ¤¶ùÿÿÿÿ
+u
+java:S1450"\Remove the "usernameLabel" field and declare it as a local variable in the relevant methods.(½”•®ÿÿÿÿÿ
+E
+java:S2387","menuBar" is the name of a field in "Frame".(ëùÐ³ûÿÿÿÿ
+?
+java:S1068"+Remove this unused "isLogin" private field.(õ„¤ì
