@@ -1,8 +1,0 @@
-
-Z
-java:S1128	"8Remove this unused import 'java.awt.event.MouseAdapter'.( ÜÍÁûÿÿÿÿ8ƒØ‹ù£/
-S
-java:S1128
-"6Remove this unused import 'java.awt.event.MouseEvent'.(›õ8ƒØ‹ù£/
-G
-java:S2387","menuBar" is the name of a field in "Frame".(ëùĞ³ûÿÿÿÿ

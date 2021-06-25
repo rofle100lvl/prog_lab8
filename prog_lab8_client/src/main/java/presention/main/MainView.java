@@ -74,9 +74,11 @@ public class MainView extends JFrame {
         // Add statistic
         JMenu statsMenu = new JMenu("Statistic");
         JMenuItem countLessThenMenuItem = new JMenuItem("Count less than should be expelled");
+        countLessThenMenuItem.addActionListener(listener);
         JMenuItem countGreaterThenMenuItem = new JMenuItem("Count greater than students count");
+        countGreaterThenMenuItem.addActionListener(listener);
         JMenuItem filterBySemesterMenuItem = new JMenuItem("Filter by semester");
-
+        filterBySemesterMenuItem.addActionListener(listener);
         statsMenu.add(countLessThenMenuItem);
         statsMenu.add(countGreaterThenMenuItem);
         statsMenu.addSeparator();
@@ -86,9 +88,13 @@ public class MainView extends JFrame {
 
         // Add other
         JMenu otherMenu = new JMenu("Other");
+
         JMenuItem infoMenuItem = new JMenuItem("Information");
+        infoMenuItem.addActionListener(listener);
         JMenuItem helpMenuItem = new JMenuItem("Help");
+        helpMenuItem.addActionListener(listener);
         JMenuItem executeScriptMenuItem = new JMenuItem("Execute script");
+        executeScriptMenuItem.addActionListener(listener);
 
         otherMenu.add(infoMenuItem);
         otherMenu.add(helpMenuItem);
@@ -119,6 +125,9 @@ public class MainView extends JFrame {
         panel.add(registerButton);
     }
 
+    public void setUsernameLabelEnabled() {
+        usernameLabel.setEnabled(isLogin);
+    }
     public void setMenuBarEnabled() {
         for (MenuElement subElement : menuBar.getSubElements()) {
             ((JMenu) subElement).setEnabled(isLogin);
@@ -134,6 +143,7 @@ public class MainView extends JFrame {
         isLogin = login;
         setMenuBarEnabled();
         setTableEnabled();
+        setUsernameLabelEnabled();
     }
 
     // Getters

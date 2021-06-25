@@ -58,10 +58,20 @@ public class Service {
         connector.send(new RemoveHeadDescription());
     }
 
+    public void clear() throws LimitOfReconnectionsException {
+        connector.send(new ClearDescription());
+    }
+
+
     public void update(int id, Flat flat) throws LimitOfReconnectionsException {
         connector.send(new UpdateIdDescription(flat,id));
     }
 
-
+    public void info() throws LimitOfReconnectionsException {
+        connector.send(new InfoCommandDescription());
+    }
+    public void help() throws LimitOfReconnectionsException {
+        connector.send(new HelpCommandDescription());
+    }
 
 }

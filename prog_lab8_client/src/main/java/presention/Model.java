@@ -222,9 +222,32 @@ public class Model implements TableModel {
         }
     }
 
+    public void info() {
+        try {
+            service.info();
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
+    }
+
+    public void clear() {
+        try {
+            service.clear();
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
+    }
+
     public void update(int id, Flat flat)  {
         try {
             service.update(id, flat);
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
+    }
+    public void help()  {
+        try {
+            service.help();
         } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
             limitOfReconnectionsException.printStackTrace();
         }
