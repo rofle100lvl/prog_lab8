@@ -16,6 +16,10 @@ public class MainView extends JFrame {
     private JButton loginButton;
     private JButton registerButton;
 
+    public void setUsernameLabel(JLabel usernameLabel) {
+        this.usernameLabel = usernameLabel;
+    }
+
     private TableView tableView;
 
     private boolean isLogin = false;
@@ -76,16 +80,18 @@ public class MainView extends JFrame {
 
         // Add statistic
         JMenu statsMenu = new JMenu("Statistic");
-        JMenuItem countLessThenMenuItem = new JMenuItem("Count less than should be expelled");
-        countLessThenMenuItem.addActionListener(listener);
-        JMenuItem countGreaterThenMenuItem = new JMenuItem("Count greater than students count");
-        countGreaterThenMenuItem.addActionListener(listener);
-        JMenuItem filterBySemesterMenuItem = new JMenuItem("Filter by semester");
-        filterBySemesterMenuItem.addActionListener(listener);
-        statsMenu.add(countLessThenMenuItem);
-        statsMenu.add(countGreaterThenMenuItem);
+        JMenuItem filterLessThanNumberOfRoomsCommandDescription = new JMenuItem("Filter less than number of rooms");
+        filterLessThanNumberOfRoomsCommandDescription.addActionListener(listener);
+        JMenuItem head = new JMenuItem("Head");
+        head.addActionListener(listener);
+        JMenuItem printFieldDescending= new JMenuItem("Print field descending");
+        printFieldDescending.addActionListener(listener);
+        JMenuItem printUniquePrice = new JMenu("Print unique price");
+        printUniquePrice.addActionListener(listener);
+        statsMenu.add(printFieldDescending);
+        statsMenu.add(printUniquePrice);
         statsMenu.addSeparator();
-        statsMenu.add(filterBySemesterMenuItem);
+        statsMenu.add(filterLessThanNumberOfRoomsCommandDescription);
 
         menuBar.add(statsMenu);
 
@@ -122,14 +128,14 @@ public class MainView extends JFrame {
         loginButton = new JButton("Log in");
         registerButton = new JButton("Register");
         usernameLabel = new JLabel("1234");
-
+        setUsernameLabelVisible();
         panel.add(usernameLabel);
         panel.add(loginButton);
         panel.add(registerButton);
     }
 
-    public void setUsernameLabelEnabled() {
-        usernameLabel.setEnabled(isLogin);
+    public void setUsernameLabelVisible() {
+        usernameLabel.setVisible(isLogin);
     }
     public void setMenuBarEnabled() {
         for (MenuElement subElement : menuBar.getSubElements()) {
@@ -146,7 +152,7 @@ public class MainView extends JFrame {
         isLogin = login;
         setMenuBarEnabled();
         setTableEnabled();
-        setUsernameLabelEnabled();
+        setUsernameLabelVisible();
     }
 
     // Getters

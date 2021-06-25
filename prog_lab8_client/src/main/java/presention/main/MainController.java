@@ -3,6 +3,8 @@ package presention.main;
 import presention.Model;
 import presention.add.AddController;
 import presention.add.AddView;
+import presention.filter.FilterLessNumberOfRoomsController;
+import presention.filter.FilterLessNumberOfRoomsView;
 import presention.login.LoginController;
 import presention.login.LoginMode;
 import presention.login.LoginView;
@@ -66,9 +68,12 @@ public class MainController {
             model.info();
         } else if("Help".equals(e.getActionCommand())) {
             model.help();
+        } else if("Filter less than number of rooms".equals(e.getActionCommand())) {
+            FilterLessNumberOfRoomsView filterLessNumberOfRoomsView = new FilterLessNumberOfRoomsView();
+            FilterLessNumberOfRoomsController controller =
+                    new FilterLessNumberOfRoomsController(filterLessNumberOfRoomsView, model);
+            controller.presentView();
         }
-
-        System.out.println(e.getActionCommand());
     }
 
     private void login() {

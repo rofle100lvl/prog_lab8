@@ -25,6 +25,7 @@ public class Model implements TableModel {
     private ArrayList<Flat> flats = new ArrayList<>();
     private MainView view;
     private Service service;
+    boolean filterMode;
 
 //    {
 //        flats.add(new Flat());

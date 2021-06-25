@@ -79,8 +79,6 @@ X
 (src/main/java/utils/ConnectorFabric.java,2\1\2161bb2643e61baae98e92cc2dd47ee3dd1ad45f
 A
 client.properties,5\b\5b69864f95fd0ee960fcb9b4a68c16430fc7cec7
-P
- src/main/java/Services/Main.java,d\b\db3318c11f0548b16569ffdd26a057a4371eeb37
 R
 "src/main/java/utils/Validator.java,a\a\aab608155111026f41f35924cb4892afe0e8a219
 O
@@ -89,7 +87,5 @@ i
 9src/main/java/presention/tablePresentation/TableView.java,9\3\93842fa100b368390d5673dde27bd2bd7ce81397
 T
 $src/main/java/model/Coordinates.java,1\8\1890bf0e30a3ea6e674bc9ba3899d8344be26e4b
-]
--src/main/java/presention/login/LoginView.java,7\2\72f577f8cf1d9bf63cd54e5594d875a78db816c9
 ]
 -src/main/java/presention/login/LoginMode.java,7\6\76e9ac73ba918675772c19d3860d47209ecdb1d1
