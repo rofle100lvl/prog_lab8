@@ -6,6 +6,8 @@ import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainView extends JFrame {
     private JTabbedPane tabbedPane;
@@ -13,6 +15,8 @@ public class MainView extends JFrame {
     private JLabel usernameLabel;
     private JButton loginButton;
     private JButton registerButton;
+
+    private TableView tableView;
 
     private boolean isLogin = false;
 
@@ -34,7 +38,7 @@ public class MainView extends JFrame {
         tabbedPane = new JTabbedPane();
 
         // Add table tab
-        TableView tableView = new TableView();
+        tableView = new TableView();
         tableView.init(model);
         tabbedPane.add("Table presentation", tableView);
 
@@ -50,21 +54,21 @@ public class MainView extends JFrame {
         JMenu editMenu = new JMenu("Edit Collection");
         JMenuItem addMenuItem = new JMenuItem("Add");
         addMenuItem.addActionListener(listener);
-        JMenuItem addIfMinMenuItem = new JMenuItem("Add if min");
-        addIfMinMenuItem.addActionListener(listener);
         JMenuItem updateMenuItem = new JMenuItem("Update");
         updateMenuItem.addActionListener(listener);
         JMenuItem remove = new JMenuItem("Remove");
         remove.addActionListener(listener);
+        JMenuItem removeHead = new JMenuItem("Remove head");
+        removeHead.addActionListener(listener);
         JMenuItem clearMenuItem = new JMenuItem("Clear");
         clearMenuItem.addActionListener(listener);
 
         editMenu.add(addMenuItem);
-        editMenu.add(addIfMinMenuItem);
         editMenu.addSeparator();
         editMenu.add(updateMenuItem);
         editMenu.addSeparator();
         editMenu.add(remove);
+        editMenu.add(removeHead);
         editMenu.addSeparator();
         editMenu.add(clearMenuItem);
 
@@ -73,9 +77,11 @@ public class MainView extends JFrame {
         // Add statistic
         JMenu statsMenu = new JMenu("Statistic");
         JMenuItem countLessThenMenuItem = new JMenuItem("Count less than should be expelled");
+        countLessThenMenuItem.addActionListener(listener);
         JMenuItem countGreaterThenMenuItem = new JMenuItem("Count greater than students count");
+        countGreaterThenMenuItem.addActionListener(listener);
         JMenuItem filterBySemesterMenuItem = new JMenuItem("Filter by semester");
-
+        filterBySemesterMenuItem.addActionListener(listener);
         statsMenu.add(countLessThenMenuItem);
         statsMenu.add(countGreaterThenMenuItem);
         statsMenu.addSeparator();
@@ -85,9 +91,13 @@ public class MainView extends JFrame {
 
         // Add other
         JMenu otherMenu = new JMenu("Other");
+
         JMenuItem infoMenuItem = new JMenuItem("Information");
+        infoMenuItem.addActionListener(listener);
         JMenuItem helpMenuItem = new JMenuItem("Help");
+        helpMenuItem.addActionListener(listener);
         JMenuItem executeScriptMenuItem = new JMenuItem("Execute script");
+        executeScriptMenuItem.addActionListener(listener);
 
         otherMenu.add(infoMenuItem);
         otherMenu.add(helpMenuItem);
@@ -95,6 +105,9 @@ public class MainView extends JFrame {
         otherMenu.add(executeScriptMenuItem);
 
         menuBar.add(otherMenu);
+
+        setMenuBarEnabled();
+        setTableEnabled();
 
         add(menuBar, BorderLayout.NORTH);
     }
@@ -113,5 +126,48 @@ public class MainView extends JFrame {
         panel.add(usernameLabel);
         panel.add(loginButton);
         panel.add(registerButton);
+    }
+
+    public void setUsernameLabelEnabled() {
+        usernameLabel.setEnabled(isLogin);
+    }
+    public void setMenuBarEnabled() {
+        for (MenuElement subElement : menuBar.getSubElements()) {
+            ((JMenu) subElement).setEnabled(isLogin);
+        }
+    }
+
+    public void setTableEnabled() {
+        if (isLogin) tableView.loginMode();
+        else tableView.logoutMode();
+    }
+
+    public void setLoginMode(boolean login) {
+        isLogin = login;
+        setMenuBarEnabled();
+        setTableEnabled();
+        setUsernameLabelEnabled();
+    }
+
+    // Getters
+
+    public JTabbedPane getTabbedPane() {
+        return tabbedPane;
+    }
+
+    public JLabel getUsernameLabel() {
+        return usernameLabel;
+    }
+
+    public JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public JButton getRegisterButton() {
+        return registerButton;
+    }
+
+    public TableView getTableView() {
+        return tableView;
     }
 }

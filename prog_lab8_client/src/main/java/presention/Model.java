@@ -1,5 +1,6 @@
 package presention;
 
+import Services.Service;
 import commandDescriptions.*;
 import exceptions.LimitOfReconnectionsException;
 import model.Flat;
@@ -22,19 +23,26 @@ import java.util.stream.Collectors;
 
 public class Model implements TableModel {
     private ArrayList<Flat> flats = new ArrayList<>();
-    private Connector connector;
     private MainView view;
-    private Response serverResponse;
+    private Service service;
 
-    {
-        flats.add(new Flat());
-        flats.add(new Flat());
-        flats.add(new Flat());
-        flats.add(new Flat());
-    }
+//    {
+//        flats.add(new Flat());
+//        flats.add(new Flat());
+//        flats.add(new Flat());
+//        flats.add(new Flat());
+//    }
 
     public Model(MainView view) {
         this.view = view;
+        service = new Service(response -> {
+            flats = response.getFlats();
+            view.repaint();
+            System.out.println(flats);
+        }, response -> {
+            JOptionPane.showMessageDialog(view,response.getRequestText());
+            if (response.getCode() == 244) view.setLoginMode(true);
+        });
     }
 
     @Override
@@ -44,7 +52,7 @@ public class Model implements TableModel {
 
     @Override
     public int getColumnCount() {
-        return 13;
+        return 14;
     }
 
     @Override
@@ -169,57 +177,80 @@ public class Model implements TableModel {
 
     }
 
-    public void add(Flat flat) throws LimitOfReconnectionsException {
-        connector.send(new AddDescription(flat));
+    public void login(String login, String password)  {
+        try {
+            service.login(login, password);
+        } catch (LimitOfReconnectionsException exception) {
+            exception.printStackTrace();
+        }
     }
 
-    public void clear() throws LimitOfReconnectionsException {
-        connector.send(new ClearDescription());
+    public void register(String login, String password) {
+        try {
+            service.register(login, password);
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
     }
 
-    public void update(Flat flat, int id) throws LimitOfReconnectionsException {
-        connector.send(new UpdateIdDescription(flat, id));
-    }
-
-    public void remove_id(int id) throws LimitOfReconnectionsException {
-        connector.send(new RemoveByIdDescription(id));
+    public void add(Flat flat)  {
+        try {
+            service.add(flat);
+            view.repaint();
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
     }
 
     public void addIfMax(Flat flat) throws LimitOfReconnectionsException {
-        connector.send(new AddIfMaxDescription(flat));
+        service.addIfMax(flat);
     }
 
-    public void remove_head() throws LimitOfReconnectionsException {
-        connector.send(new RemoveHeadDescription());
+    public void remove_by_id(int id) {
+        try {
+            service.remove_by_id(id);
+        } catch (LimitOfReconnectionsException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void setFlats(ArrayList<Flat> flats) {
-        this.flats = flats;
+    public void remove_head() {
+        try {
+            service.remove_head();
+        } catch (LimitOfReconnectionsException e) {
+            e.printStackTrace();
+        }
     }
 
-    public Response filterLessThanNumberOfRooms(int numberOfRooms) {
-        if (flats.isEmpty()) return new Response(204, Consts.emptyCollection);
-        return new Response(200,
-                flats.stream()
-                        .filter(x -> x.getNumberOfRooms() < numberOfRooms)
-                        .map(Flat::niceToString)
-                        .collect(Collectors.joining("\n")));
+    public void info() {
+        try {
+            service.info();
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
     }
 
-    public Response getFieldDescendingHouse() {
-        return new Response(201, flats.stream()
-                .map(Flat::getHouse)
-                .map(House::toString)
-                .collect(Collectors.joining("\n")));
+    public void clear() {
+        try {
+            service.clear();
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
     }
 
-    public Response getUniquePrice() {
-        HashSet<Integer> uniquePrice = new HashSet<>();
-        flats.stream()
-                .forEach(flat -> uniquePrice.add(flat.getPrice()));
-        return new Response(200, uniquePrice.stream()
-                .map(Object::toString)
-                .collect(Collectors.joining(", ")));
+    public void update(int id, Flat flat)  {
+        try {
+            service.update(id, flat);
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
+    }
+    public void help()  {
+        try {
+            service.help();
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
     }
 }
 

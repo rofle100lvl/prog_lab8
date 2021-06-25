@@ -11,18 +11,19 @@ import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class Service {
-    Connector connector;
+    private Connector connector;
     private final ExecutorService executor;
     private final Receiver receiver;
 
-    public Service() throws Exception {
+    public Service(Consumer<Response> answerWithCollection, Consumer<Response> answerWithoutCollection) {
         connector = ConnectorFabric.getConnector();
         executor = Executors.newSingleThreadExecutor();
-        receiver = new Receiver(connector, () -> System.out.println(1), () -> System.out.println(2));
+        receiver = new Receiver(connector, answerWithCollection, answerWithoutCollection);
         executor.submit(receiver);
-
     }
 
     private void setUserData(String login, String password) {
@@ -57,10 +58,20 @@ public class Service {
         connector.send(new RemoveHeadDescription());
     }
 
+    public void clear() throws LimitOfReconnectionsException {
+        connector.send(new ClearDescription());
+    }
+
+
     public void update(int id, Flat flat) throws LimitOfReconnectionsException {
         connector.send(new UpdateIdDescription(flat,id));
     }
 
-
+    public void info() throws LimitOfReconnectionsException {
+        connector.send(new InfoCommandDescription());
+    }
+    public void help() throws LimitOfReconnectionsException {
+        connector.send(new HelpCommandDescription());
+    }
 
 }

@@ -1,0 +1,8 @@
+
+w
+java:S1210ì"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(ñµê¤8ú£–ö£/
+t	java:S116"SRename this field "owner_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÚ€ƒùÿÿÿÿ8û£–ö£/
+;
+java:S2129E"Remove this "Long" constructor(Âì“8ÿ£–ö£/
+d
+java:S1126È"AReplace this if-then-else statement by a single return statement.(øôˆ½üÿÿÿÿ8‰¤–ö£/

@@ -27,10 +27,6 @@ Z
 *src/main/java/annotations/GreaterThan.java,9\d\9d636f2b5157399b759481bc167e73b93bd20733
 O
 src/main/java/support/User.java,f\3\f3b1d5411d31527d4631ca24518d9d77ec2863e0
-T
-$src/main/java/model/Coordinates.java,1\8\1890bf0e30a3ea6e674bc9ba3899d8344be26e4b
-i
-9src/main/java/presention/tablePresentation/TableView.java,9\3\93842fa100b368390d5673dde27bd2bd7ce81397
 i
 9src/main/java/exceptions/UnknownCommandNameException.java,b\0\b034ff82e1df24587f1eb160d9da8c095a4e5d4e
 e
@@ -71,15 +67,29 @@ v
 Fsrc/main/java/commandDescriptions/PrintFieldDescendingDescription.java,a\1\a14c2d0d9abc3bdbe561efae8cd0581dbb9b70f9
 n
 >src/main/java/commandDescriptions/LoginCommandDescription.java,a\f\af331563cc992f10f408e6be09fdc75f8dad0a80
-Y
-)src/main/java/presention/add/AddView.java,e\0\e05c4c5feb6c9fddf1b585326d936be4c56ea8e1
 j
 :src/main/java/commandDescriptions/AddIfMaxDescription.java,4\8\48239fe19afddc1bcefd0747b355d6e86d275de0
-O
-src/main/java/utils/Consts.java,d\c\dcdf0ea93a5445083f046b3e3a86c1b51402998e
-[
-+src/main/java/presention/main/MainView.java,6\0\60bea0a2dbe0c410823922e66ede5798ba9076fe
+M
+src/main/java/model/Flat.java,0\8\08e1a60624666b3a8e36e171c2dd8a0f52a71bb0
+N
+src/main/java/model/House.java,b\4\b4b277f48fdb4de78abdee7e5fc6d7fc091036de
+Q
+!src/main/java/utils/Response.java,e\3\e3909a138e2a1e9536b291a06712aedd8fcb2708
+X
+(src/main/java/utils/ConnectorFabric.java,2\1\2161bb2643e61baae98e92cc2dd47ee3dd1ad45f
+A
+client.properties,5\b\5b69864f95fd0ee960fcb9b4a68c16430fc7cec7
+P
+ src/main/java/Services/Main.java,d\b\db3318c11f0548b16569ffdd26a057a4371eeb37
 R
 "src/main/java/utils/Validator.java,a\a\aab608155111026f41f35924cb4892afe0e8a219
-G
-src/main/java/Main.java,e\4\e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
+O
+src/main/java/utils/Consts.java,d\c\dcdf0ea93a5445083f046b3e3a86c1b51402998e
+i
+9src/main/java/presention/tablePresentation/TableView.java,9\3\93842fa100b368390d5673dde27bd2bd7ce81397
+T
+$src/main/java/model/Coordinates.java,1\8\1890bf0e30a3ea6e674bc9ba3899d8344be26e4b
+]
+-src/main/java/presention/login/LoginView.java,7\2\72f577f8cf1d9bf63cd54e5594d875a78db816c9
+]
+-src/main/java/presention/login/LoginMode.java,7\6\76e9ac73ba918675772c19d3860d47209ecdb1d1

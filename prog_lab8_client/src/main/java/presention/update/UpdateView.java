@@ -1,4 +1,4 @@
-package presention.add;
+package presention.update;
 
 import model.Furnish;
 
@@ -10,8 +10,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AddView extends JFrame {
-    private AddMode mode;
+public class UpdateView extends JFrame {
+    private JTextField idTextField;
     private JTextField nameTextField;
     private JTextField xCoordTextField;
     private JTextField yCoordTextField;
@@ -29,7 +29,7 @@ public class AddView extends JFrame {
 
 
     public void init(ActionListener listener) {
-        setTitle("Add");
+        setTitle("Update");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         GridBagLayout layout = new GridBagLayout();
@@ -37,6 +37,7 @@ public class AddView extends JFrame {
 
         GridBagConstraints constraints = new GridBagConstraints();
 
+        idTextField = new JTextField(10);
         nameTextField = new JTextField(10);
         xCoordTextField = new JTextField(10);
         yCoordTextField = new JTextField(10);
@@ -50,11 +51,8 @@ public class AddView extends JFrame {
         houseNumberOfFloorsTextField = new JTextField(10);
         houseNumberOfFlatsOnFloorTextField = new JTextField(10);
         houseNumberOfLifts = new JTextField(10);
-
-        JComboBox<AddMode> addModeComboBox = new JComboBox<>(AddMode.values());
-        addModeComboBox.addItemListener(e -> setMode((AddMode) e.getItem()));
-
         Map<String, JComponent> stringJComponentMap = new LinkedHashMap<>();
+        stringJComponentMap.put("Id:", idTextField);
         stringJComponentMap.put("Name:", nameTextField);
         stringJComponentMap.put("X Coordinate:", xCoordTextField);
         stringJComponentMap.put("Y Coordinate:", yCoordTextField);
@@ -69,12 +67,6 @@ public class AddView extends JFrame {
         stringJComponentMap.put("Numbers of flats:", houseNumberOfFlatsOnFloorTextField);
         stringJComponentMap.put("Number of Lifts:", houseNumberOfLifts);
 
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.insets = new Insets(10, 10, 5, 10);
-        add(new JLabel("Mode:"), constraints);
-        constraints.gridx = 1;
-        add(addModeComboBox, constraints);
         constraints.insets = new Insets(5, 10, 5, 10);
         AtomicInteger i = new AtomicInteger(0);
         stringJComponentMap.forEach((string, comp) -> {
@@ -92,16 +84,14 @@ public class AddView extends JFrame {
         button.addActionListener(listener);
         add(button, constraints);
 
-        setMode((AddMode) addModeComboBox.getSelectedItem());
-
         setMinimumSize(layout.minimumLayoutSize(getContentPane()));
 
         pack();
         setVisible(true);
     }
 
-    public void setMode(AddMode mode) {
-        this.mode = mode;
+    public JTextField getIdTextField() {
+        return idTextField;
     }
 
     public JTextField getNameTextField() {
@@ -110,6 +100,10 @@ public class AddView extends JFrame {
 
     public JTextField getxCoordTextField() {
         return xCoordTextField;
+    }
+
+    public JTextField getHouseNumberOfLifts() {
+        return houseNumberOfLifts;
     }
 
     public JTextField getyCoordTextField() {
@@ -130,10 +124,6 @@ public class AddView extends JFrame {
 
     public JCheckBox getBalconyCheckBox() {
         return balconyCheckBox;
-    }
-
-    public JTextField getHouseNumberOfLifts() {
-        return houseNumberOfLifts;
     }
 
     public JComboBox<Furnish> getFurnishComboBox() {

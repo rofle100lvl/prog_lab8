@@ -21,6 +21,12 @@ public class RemoveController {
     }
 
     public void didTapApply(ActionEvent e) {
-        System.out.println("Deleted");
+        remove();
+    }
+
+    private void remove() {
+        model.remove_by_id(Integer.parseInt(view.getIndexTextField().getText()));
+        view.dispose();
+
     }
 }
