@@ -1,9 +1,0 @@
-
-G
-java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
-l
-java:S1450"SRemove the "mode" field and declare it as a local variable in the relevant methods.(ŸÄô“üÿÿÿÿ
-`
-java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Òœ Ð
-A
-java:S1068"(Remove this unused "mode" private field.(ŸÄô“üÿÿÿÿ

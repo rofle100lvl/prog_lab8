@@ -1,11 +1,0 @@
-
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–8¸Í½¤/
-V
-java:S1128"9Remove this unused import 'java.util.function.Predicate'.(ïÍ–¶8¹Í½¤/
-M
-java:S1128
-"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8¹Í½¤/
-c
-java:S1128"GRemove this unused import 'java.util.concurrent.ConcurrentLinkedQueue'.(°½Âh8ºÍ½¤/
-o	java:S1005"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜÕ¨üøÿÿÿÿ8¿Í½¤/
-o	java:S1009"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦€æÿÿÿÿÿ8ÀÍ½¤/
