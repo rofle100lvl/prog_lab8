@@ -26,7 +26,6 @@ public class Receiver implements Callable<Response> {
 
     @Override
     public Response call() throws Exception {
-
         while (true) {
             Response serverResponse = connector.receive();
             if (serverResponse != null) {

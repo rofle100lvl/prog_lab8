@@ -112,8 +112,8 @@ public class Connector {
 
     public Response receive() throws LimitOfReconnectionsException {
         try {
-            if(isFull) buffer = new byte[4096];
-            lastByte = client.read(ByteBuffer.wrap(buffer, lastByte,2048));
+            if(isFull) buffer = new byte[65536];
+            lastByte = client.read(ByteBuffer.wrap(buffer, lastByte,65536));
             if(lastByte == 0)return null;
             input = new ObjectInputStream(new ByteArrayInputStream(buffer));
             isFull = true;
@@ -127,9 +127,11 @@ public class Connector {
         }
         catch (StreamCorruptedException e){
             isFull=false;
+            e.printStackTrace();
             return null;
         }
         catch (ClosedByInterruptException | ClassNotFoundException ignored){
+            ignored.printStackTrace();
             return null;
         }
         catch (IOException e) {

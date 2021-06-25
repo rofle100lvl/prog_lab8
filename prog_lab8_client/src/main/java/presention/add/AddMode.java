@@ -1,7 +1,7 @@
 package presention.add;
 
 public enum AddMode {
-    ADD, ADD_IF_MIN;
+    ADD, ADD_IF_MAX;
 
 
     @Override
@@ -9,8 +9,8 @@ public enum AddMode {
         switch (this) {
             case ADD:
                 return "Add";
-            case ADD_IF_MIN:
-                return "Add if min";
+            case ADD_IF_MAX:
+                return "Add if max";
             default:
                 return "";
         }

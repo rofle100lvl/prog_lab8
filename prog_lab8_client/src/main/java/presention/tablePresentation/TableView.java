@@ -18,7 +18,7 @@ public class TableView extends JPanel {
         layout = new CardLayout();
         setLayout(layout);
 
-        JPanel panel1 = new JPanel();
+        JPanel panel1 = new JPanel(new BorderLayout());
         JPanel panel2 = new JPanel();
 
         table = new JTable(model);

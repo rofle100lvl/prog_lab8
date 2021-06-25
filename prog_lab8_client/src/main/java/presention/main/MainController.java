@@ -60,7 +60,15 @@ public class MainController {
             UpdateView addView = new UpdateView();
             UpdateController controller = new UpdateController(addView, model);
             controller.presentView();
+        } else if("Clear".equals(e.getActionCommand())) {
+            model.clear();
+        } else if("Information".equals(e.getActionCommand())) {
+            model.info();
+        } else if("Help".equals(e.getActionCommand())) {
+            model.help();
         }
+
+        System.out.println(e.getActionCommand());
     }
 
     private void login() {
@@ -73,5 +81,9 @@ public class MainController {
         LoginView loginView = new LoginView(LoginMode.REGISTER);
         LoginController loginController = new LoginController(loginView, model);
         loginController.presentView();
+    }
+
+    private void clear() {
+
     }
 }

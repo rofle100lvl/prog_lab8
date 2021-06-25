@@ -24,6 +24,7 @@ public class AddView extends JFrame {
     private JTextField houseYearTextField;
     private JTextField houseNumberOfFloorsTextField;
     private JTextField houseNumberOfFlatsOnFloorTextField;
+    private JTextField houseNumberOfLifts;
     private JButton button;
 
 
@@ -48,6 +49,7 @@ public class AddView extends JFrame {
         houseYearTextField = new JTextField(10);
         houseNumberOfFloorsTextField = new JTextField(10);
         houseNumberOfFlatsOnFloorTextField = new JTextField(10);
+        houseNumberOfLifts = new JTextField(10);
 
         JComboBox<AddMode> addModeComboBox = new JComboBox<>(AddMode.values());
         addModeComboBox.addItemListener(e -> setMode((AddMode) e.getItem()));
@@ -59,12 +61,13 @@ public class AddView extends JFrame {
         stringJComponentMap.put("Area:", areaTextField);
         stringJComponentMap.put("Number of rooms:", numberOfRoomsTextField);
         stringJComponentMap.put("Price:", priceTextField);
-        stringJComponentMap.put("Balcony", balconyCheckBox);
+        stringJComponentMap.put("Balcony:", balconyCheckBox);
         stringJComponentMap.put("Furnish:", furnishComboBox);
         stringJComponentMap.put("Name of House:", houseNameTextField);
         stringJComponentMap.put("Year of House:", houseYearTextField);
         stringJComponentMap.put("Number of floors:", houseNumberOfFloorsTextField);
         stringJComponentMap.put("Numbers of flats:", houseNumberOfFlatsOnFloorTextField);
+        stringJComponentMap.put("Number of Lifts:", houseNumberOfLifts);
 
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -99,5 +102,61 @@ public class AddView extends JFrame {
 
     public void setMode(AddMode mode) {
         this.mode = mode;
+    }
+
+    public JTextField getNameTextField() {
+        return nameTextField;
+    }
+
+    public JTextField getxCoordTextField() {
+        return xCoordTextField;
+    }
+
+    public JTextField getyCoordTextField() {
+        return yCoordTextField;
+    }
+
+    public JTextField getAreaTextField() {
+        return areaTextField;
+    }
+
+    public JTextField getNumberOfRoomsTextField() {
+        return numberOfRoomsTextField;
+    }
+
+    public JTextField getPriceTextField() {
+        return priceTextField;
+    }
+
+    public JCheckBox getBalconyCheckBox() {
+        return balconyCheckBox;
+    }
+
+    public JTextField getHouseNumberOfLifts() {
+        return houseNumberOfLifts;
+    }
+
+    public JComboBox<Furnish> getFurnishComboBox() {
+        return furnishComboBox;
+    }
+
+    public JTextField getHouseNameTextField() {
+        return houseNameTextField;
+    }
+
+    public JTextField getHouseYearTextField() {
+        return houseYearTextField;
+    }
+
+    public JTextField getHouseNumberOfFloorsTextField() {
+        return houseNumberOfFloorsTextField;
+    }
+
+    public JTextField getHouseNumberOfFlatsOnFloorTextField() {
+        return houseNumberOfFlatsOnFloorTextField;
+    }
+
+    public JButton getButton() {
+        return button;
     }
 }
