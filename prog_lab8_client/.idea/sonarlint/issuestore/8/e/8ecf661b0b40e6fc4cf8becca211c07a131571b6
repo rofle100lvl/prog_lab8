@@ -1,14 +1,0 @@
-
-=
-java:S2189""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–
-V
-java:S1128"9Remove this unused import 'java.util.function.Predicate'.(ïÍ–¶8‰áø£/
-D
-java:S1128"'Remove this unused import 'model.Flat'.(†¼Ø8‰áø£/
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8‰áø£/
-c
-java:S1128
-"GRemove this unused import 'java.util.concurrent.ConcurrentLinkedQueue'.(°½Âh8‰áø£/
-U	java:S106$"9Replace this use of System.out or System.err by a logger.(šß÷Ü8·¤§‚¤/

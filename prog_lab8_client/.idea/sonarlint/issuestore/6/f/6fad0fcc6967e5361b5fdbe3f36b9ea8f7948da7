@@ -1,28 +1,0 @@
-
-G
-java:S1128
-",Remove this unused import 'utils.Connector'.(Éµ¬¿şÿÿÿÿ
-K
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
-S
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ
->
-java:S1128"(Remove this unused import 'model.House'.(ÕÛºÃ
-C
-java:S1128".Remove this unused import 'java.util.HashSet'.(Ê‚êX
-A
-java:S1128"+Remove this unused import 'utils.Response'.(´Õ¯í
-D
-java:S1128")Remove this unused import 'utils.Consts'.(ëìÂ¾ûÿÿÿÿ
-M
-java:S1128"2Remove this unused import 'utils.ConnectorFabric'.(›¬Üàûÿÿÿÿ
-˜
-java:S1186§"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(“‹ÁÃ
-—
-java:S1186«"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‘Ş«
-
-java:S1186°"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‡ÿÜçùÿÿÿÿ
-Q	java:S125"<This block of commented-out lines of code should be removed.(Ú°à¬
-U	java:S106)"9Replace this use of System.out or System.err by a logger.(Ö’úÑ8ÆåÊ‚¤/
-p	java:S100Ñ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜÕ¨üøÿÿÿÿ8´„ü€¤/
-p	java:S100Õ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦€æÿÿÿÿÿ8µ„ü€¤/

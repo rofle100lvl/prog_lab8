@@ -206,12 +206,20 @@ public class Model implements TableModel {
         service.addIfMax(flat);
     }
 
-    public void remove_by_id(int id) throws LimitOfReconnectionsException {
-        service.remove_by_id(id);
+    public void remove_by_id(int id) {
+        try {
+            service.remove_by_id(id);
+        } catch (LimitOfReconnectionsException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void remove_head() throws LimitOfReconnectionsException {
-        service.remove_head();
+    public void remove_head() {
+        try {
+            service.remove_head();
+        } catch (LimitOfReconnectionsException e) {
+            e.printStackTrace();
+        }
     }
 
     public void update(int id, Flat flat)  {

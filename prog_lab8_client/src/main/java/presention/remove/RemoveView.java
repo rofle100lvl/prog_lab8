@@ -75,4 +75,12 @@ public class RemoveView extends JFrame {
         mode = removeMode;
         label.setText(removeMode.equals(RemoveMode.REMOVE_HEAD) ? "At:" : "Id:");
     }
+
+    public RemoveMode getMode() {
+        return mode;
+    }
+
+    public JTextField getIndexTextField() {
+        return indexTextField;
+    }
 }
