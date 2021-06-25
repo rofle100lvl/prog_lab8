@@ -23,10 +23,8 @@ public class MainView extends JFrame {
     private JButton registerButton;
     Locale ru = new Locale("ru", "RU");
     Locale chr = new Locale("chr");
-    Locale sp = new Locale("sp");
+    Locale sp = new Locale("sp", "SP");
     Locale po = new Locale("po");
-    File ru_Loc = new File("bundles/GuiLabels_ru.properties");
-    File po_Loc = new File("bundles/GuiLabels_po.properties");
     ResourceBundle rb;
 
     public void setUsernameLabel(JLabel usernameLabel) {
@@ -38,9 +36,11 @@ public class MainView extends JFrame {
     private boolean isLogin = false;
 
     public void init(ActionListener listener, Model model) {
-        rb = ResourceBundle.getBundle("bundles.GuiLabels", ru);
+        rb = ResourceBundle.getBundle("bundles.gui", sp);
         System.out.println(rb.getString("login"));
+
         setTitle("Storage of Study Groups");
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
 
