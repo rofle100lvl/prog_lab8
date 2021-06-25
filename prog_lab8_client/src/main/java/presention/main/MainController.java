@@ -68,7 +68,7 @@ public class MainController {
             model.info();
         } else if("Help".equals(e.getActionCommand())) {
             model.help();
-        } else if("Filter less than number of rooms".equals(e.getActionCommand())) {
+        } else if("Filter".equals(e.getActionCommand())) {
             FilterLessNumberOfRoomsView filterLessNumberOfRoomsView = new FilterLessNumberOfRoomsView();
             FilterLessNumberOfRoomsController controller =
                     new FilterLessNumberOfRoomsController(filterLessNumberOfRoomsView, model);

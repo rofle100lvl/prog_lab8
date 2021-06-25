@@ -41,6 +41,7 @@ public class TableView extends JPanel {
         layout.show(this, "logout");
     }
 
-
-
+    public JTable getTable() {
+        return table;
+    }
 }
