@@ -90,6 +90,4 @@ i
 T
 $src/main/java/model/Coordinates.java,1\8\1890bf0e30a3ea6e674bc9ba3899d8344be26e4b
 ]
--src/main/java/presention/login/LoginView.java,7\2\72f577f8cf1d9bf63cd54e5594d875a78db816c9
-]
 -src/main/java/presention/login/LoginMode.java,7\6\76e9ac73ba918675772c19d3860d47209ecdb1d1
