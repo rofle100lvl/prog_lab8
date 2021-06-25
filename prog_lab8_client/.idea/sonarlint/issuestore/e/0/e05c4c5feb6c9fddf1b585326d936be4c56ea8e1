@@ -1,19 +1,9 @@
 
-m
-java:S1450"YRemove the "textField1" field and declare it as a local variable in the relevant methods.(×ŒàÌ
-r
-java:S1450"YRemove the "textField2" field and declare it as a local variable in the relevant methods.(ˆûÓ‘ûÿÿÿÿ
-r
-java:S1450"YRemove the "textField3" field and declare it as a local variable in the relevant methods.(”€†ðþÿÿÿÿ
-r
-java:S1450"YRemove the "textField4" field and declare it as a local variable in the relevant methods.(ÌÁ¿Šúÿÿÿÿ
-r
-java:S1450"YRemove the "textField5" field and declare it as a local variable in the relevant methods.(ó²ÀÁþÿÿÿÿ
-T	java:S125"<This block of commented-out lines of code should be removed.(èÎüÿÿÿÿ
-T	java:S125"<This block of commented-out lines of code should be removed.(«œæÐüÿÿÿÿ
-G
-java:S1068".Remove this unused "textField3" private field.(”€†ðþÿÿÿÿ
-G
-java:S1068".Remove this unused "textField4" private field.(ÌÁ¿Šúÿÿÿÿ
-G
-java:S1068".Remove this unused "textField5" private field.(ó²ÀÁþÿÿÿÿ
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+n
+java:S1450"SRemove the "mode" field and declare it as a local variable in the relevant methods.(ŸÄô“üÿÿÿÿ
+b
+java:S3252!"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Òœ Ð
+C
+java:S1068"(Remove this unused "mode" private field.(ŸÄô“üÿÿÿÿ

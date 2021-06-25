@@ -15,7 +15,7 @@ public class RemoveView extends JFrame {
 
     public RemoveView() {
         super();
-        this.mode = RemoveMode.REMOVE_AT;
+        this.mode = RemoveMode.REMOVE_HEAD;
     }
 
     public void init(ActionListener listener) {
@@ -73,6 +73,6 @@ public class RemoveView extends JFrame {
 
     private void setMode(RemoveMode removeMode) {
         mode = removeMode;
-        label.setText(removeMode.equals(RemoveMode.REMOVE_AT) ? "At:" : "Id:");
+        label.setText(removeMode.equals(RemoveMode.REMOVE_HEAD) ? "At:" : "Id:");
     }
 }

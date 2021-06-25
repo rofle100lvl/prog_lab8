@@ -131,7 +131,6 @@ public class MainView extends JFrame {
     }
 
     public void setLoginMode(boolean login) {
-        System.out.println(1);
         isLogin = login;
         setMenuBarEnabled();
         setTableEnabled();

@@ -24,6 +24,7 @@ public class UpdateView extends JFrame {
     private JTextField houseYearTextField;
     private JTextField houseNumberOfFloorsTextField;
     private JTextField houseNumberOfFlatsOnFloorTextField;
+    private JTextField houseNumberOfLifts;
     private JButton button;
 
 
@@ -49,7 +50,7 @@ public class UpdateView extends JFrame {
         houseYearTextField = new JTextField(10);
         houseNumberOfFloorsTextField = new JTextField(10);
         houseNumberOfFlatsOnFloorTextField = new JTextField(10);
-
+        houseNumberOfLifts = new JTextField(10);
         Map<String, JComponent> stringJComponentMap = new LinkedHashMap<>();
         stringJComponentMap.put("Id:", idTextField);
         stringJComponentMap.put("Name:", nameTextField);
@@ -64,6 +65,7 @@ public class UpdateView extends JFrame {
         stringJComponentMap.put("Year of House:", houseYearTextField);
         stringJComponentMap.put("Number of floors:", houseNumberOfFloorsTextField);
         stringJComponentMap.put("Numbers of flats:", houseNumberOfFlatsOnFloorTextField);
+        stringJComponentMap.put("Number of Lifts:", houseNumberOfLifts);
 
         constraints.insets = new Insets(5, 10, 5, 10);
         AtomicInteger i = new AtomicInteger(0);
@@ -86,5 +88,65 @@ public class UpdateView extends JFrame {
 
         pack();
         setVisible(true);
+    }
+
+    public JTextField getIdTextField() {
+        return idTextField;
+    }
+
+    public JTextField getNameTextField() {
+        return nameTextField;
+    }
+
+    public JTextField getxCoordTextField() {
+        return xCoordTextField;
+    }
+
+    public JTextField getHouseNumberOfLifts() {
+        return houseNumberOfLifts;
+    }
+
+    public JTextField getyCoordTextField() {
+        return yCoordTextField;
+    }
+
+    public JTextField getAreaTextField() {
+        return areaTextField;
+    }
+
+    public JTextField getNumberOfRoomsTextField() {
+        return numberOfRoomsTextField;
+    }
+
+    public JTextField getPriceTextField() {
+        return priceTextField;
+    }
+
+    public JCheckBox getBalconyCheckBox() {
+        return balconyCheckBox;
+    }
+
+    public JComboBox<Furnish> getFurnishComboBox() {
+        return furnishComboBox;
+    }
+
+    public JTextField getHouseNameTextField() {
+        return houseNameTextField;
+    }
+
+    public JTextField getHouseYearTextField() {
+        return houseYearTextField;
+    }
+
+    public JTextField getHouseNumberOfFloorsTextField() {
+        return houseNumberOfFloorsTextField;
+    }
+
+    public JTextField getHouseNumberOfFlatsOnFloorTextField() {
+        return houseNumberOfFlatsOnFloorTextField;
+    }
+
+    public JButton getButton() {
+        return button;
     }
 }

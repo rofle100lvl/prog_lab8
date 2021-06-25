@@ -1,0 +1,9 @@
+
+
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ğ•Ç8½¥–ö£/
+’
+java:S1319 "pThe type of the "flats" object should be an interface such as "List" rather than the implementation "ArrayList".(ÀÔ¶›şÿÿÿÿ8½¥–ö£/
+S
+java:S1153'"1Directly append the argument of String.valueOf().(ôä¥æùÿÿÿÿ8¿¥–ö£/
+Z	java:S106'"9Replace this use of System.out or System.err by a logger.(ôä¥æùÿÿÿÿ8Ä¥–ö£/
+U	java:S106("9Replace this use of System.out or System.err by a logger.(Á×Öõ8Å¥–ö£/

@@ -37,6 +37,8 @@ public class Model implements TableModel {
         this.view = view;
         service = new Service(response -> {
             flats = response.getFlats();
+            view.repaint();
+            System.out.println(flats);
         }, response -> {
             JOptionPane.showMessageDialog(view,response.getRequestText());
             if (response.getCode() == 244) view.setLoginMode(true);
@@ -50,7 +52,7 @@ public class Model implements TableModel {
 
     @Override
     public int getColumnCount() {
-        return 13;
+        return 14;
     }
 
     @Override
@@ -186,6 +188,35 @@ public class Model implements TableModel {
     public void register(String login, String password) {
         try {
             service.register(login, password);
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
+    }
+
+    public void add(Flat flat)  {
+        try {
+            service.add(flat);
+            view.repaint();
+        } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
+            limitOfReconnectionsException.printStackTrace();
+        }
+    }
+
+    public void addIfMax(Flat flat) throws LimitOfReconnectionsException {
+        service.addIfMax(flat);
+    }
+
+    public void remove_by_id(int id) throws LimitOfReconnectionsException {
+        service.remove_by_id(id);
+    }
+
+    public void remove_head() throws LimitOfReconnectionsException {
+        service.remove_head();
+    }
+
+    public void update(int id, Flat flat)  {
+        try {
+            service.update(id, flat);
         } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
             limitOfReconnectionsException.printStackTrace();
         }
