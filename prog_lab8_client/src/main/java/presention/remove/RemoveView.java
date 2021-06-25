@@ -71,6 +71,9 @@ public class RemoveView extends JFrame {
         return indexTextField.getText();
     }
 
+    public JTextField getIndexTextField() {
+        return indexTextField;
+    }
 
 //    private void setMode(RemoveMode removeMode) {
 //        mode = removeMode;

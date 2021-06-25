@@ -25,12 +25,8 @@ public class RemoveController {
     }
 
     private void remove() {
-        if (view.getMode() == RemoveMode.REMOVE_BY_ID) {
-            model.remove_by_id(Integer.parseInt(view.getIndexTextField().getText()));
-        }
-        else {
-            model.remove_head();
-        }
+        model.remove_by_id(Integer.parseInt(view.getIndexTextField().getText()));
+        view.dispose();
 
     }
 }
