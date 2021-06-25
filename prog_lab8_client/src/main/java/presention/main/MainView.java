@@ -16,6 +16,10 @@ public class MainView extends JFrame {
     private JButton loginButton;
     private JButton registerButton;
 
+    public void setUsernameLabel(JLabel usernameLabel) {
+        this.usernameLabel = usernameLabel;
+    }
+
     private TableView tableView;
 
     private boolean isLogin = false;
@@ -124,14 +128,14 @@ public class MainView extends JFrame {
         loginButton = new JButton("Log in");
         registerButton = new JButton("Register");
         usernameLabel = new JLabel("1234");
-
+        setUsernameLabelVisible();
         panel.add(usernameLabel);
         panel.add(loginButton);
         panel.add(registerButton);
     }
 
-    public void setUsernameLabelEnabled() {
-        usernameLabel.setEnabled(isLogin);
+    public void setUsernameLabelVisible() {
+        usernameLabel.setVisible(isLogin);
     }
     public void setMenuBarEnabled() {
         for (MenuElement subElement : menuBar.getSubElements()) {
@@ -148,7 +152,7 @@ public class MainView extends JFrame {
         isLogin = login;
         setMenuBarEnabled();
         setTableEnabled();
-        setUsernameLabelEnabled();
+        setUsernameLabelVisible();
     }
 
     // Getters

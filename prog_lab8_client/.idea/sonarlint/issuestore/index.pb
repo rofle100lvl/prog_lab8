@@ -79,8 +79,6 @@ X
 (src/main/java/utils/ConnectorFabric.java,2\1\2161bb2643e61baae98e92cc2dd47ee3dd1ad45f
 A
 client.properties,5\b\5b69864f95fd0ee960fcb9b4a68c16430fc7cec7
-P
- src/main/java/Services/Main.java,d\b\db3318c11f0548b16569ffdd26a057a4371eeb37
 R
 "src/main/java/utils/Validator.java,a\a\aab608155111026f41f35924cb4892afe0e8a219
 O
