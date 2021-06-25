@@ -36,10 +36,8 @@ public class MainView extends JFrame {
     private boolean isLogin = false;
 
     public void init(ActionListener listener, Model model) {
-        rb = ResourceBundle.getBundle("bundles.gui", sp);
-        System.out.println(rb.getString("login"));
-
-        setTitle("Storage of Study Groups");
+        rb = ResourceBundle.getBundle("bundles.gui");
+        setTitle(rb.getString("titleName"));
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -59,7 +57,7 @@ public class MainView extends JFrame {
         // Add table tab
         tableView = new TableView();
         tableView.init(model);
-        tabbedPane.add("Table presentation", tableView);
+        tabbedPane.add(rb.getString("tablePresentation"), tableView);
 
         tableView.getTable().getTableHeader().addMouseListener(new MouseAdapter() {
             @Override
@@ -83,16 +81,14 @@ public class MainView extends JFrame {
         menuBar = new JMenuBar();
 
         // Add edit menu
-        JMenu editMenu = new JMenu("Edit Collection");
-        JMenuItem addMenuItem = new JMenuItem("Add");
+        JMenu editMenu = new JMenu(rb.getString("firstMenu.name"));
+        JMenuItem addMenuItem = new JMenuItem(rb.getString("firstMenu.field1"));
         addMenuItem.addActionListener(listener);
-        JMenuItem updateMenuItem = new JMenuItem("Update");
+        JMenuItem updateMenuItem = new JMenuItem(rb.getString("firstMenu.field2"));
         updateMenuItem.addActionListener(listener);
-        JMenuItem remove = new JMenuItem("Remove");
+        JMenuItem remove = new JMenuItem(rb.getString("firstMenu.field3"));
         remove.addActionListener(listener);
-        JMenuItem removeHead = new JMenuItem("Remove head");
-        removeHead.addActionListener(listener);
-        JMenuItem clearMenuItem = new JMenuItem("Clear");
+        JMenuItem clearMenuItem = new JMenuItem(rb.getString("firstMenu.field4"));
         clearMenuItem.addActionListener(listener);
 
         editMenu.add(addMenuItem);
@@ -100,19 +96,18 @@ public class MainView extends JFrame {
         editMenu.add(updateMenuItem);
         editMenu.addSeparator();
         editMenu.add(remove);
-        editMenu.add(removeHead);
         editMenu.addSeparator();
         editMenu.add(clearMenuItem);
 
         menuBar.add(editMenu);
 
         // Add statistic
-        JMenu statsMenu = new JMenu("Statistic");
-        JMenuItem filterLessThanNumberOfRoomsCommandDescription = new JMenuItem("Filter");
+        JMenu statsMenu = new JMenu(rb.getString("secondMenu.name"));
+        JMenuItem filterLessThanNumberOfRoomsCommandDescription = new JMenuItem(rb.getString("secondMenu.field1"));
         filterLessThanNumberOfRoomsCommandDescription.addActionListener(listener);
-        JMenuItem printFieldDescending= new JMenuItem("Print field descending");
+        JMenuItem printFieldDescending= new JMenuItem(rb.getString("secondMenu.field2"));
         printFieldDescending.addActionListener(listener);
-        JMenuItem printUniquePrice = new JMenuItem("Print unique price");
+        JMenuItem printUniquePrice = new JMenuItem(rb.getString("secondMenu.field3"));
         printUniquePrice.addActionListener(listener);
 
         statsMenu.add(printFieldDescending);
@@ -123,13 +118,13 @@ public class MainView extends JFrame {
         menuBar.add(statsMenu);
 
         // Add other
-        JMenu otherMenu = new JMenu("Other");
+        JMenu otherMenu = new JMenu(rb.getString("thirdMenu.name"));
 
-        JMenuItem infoMenuItem = new JMenuItem("Information");
+        JMenuItem infoMenuItem = new JMenuItem(rb.getString("thirdMenu.field1"));
         infoMenuItem.addActionListener(listener);
-        JMenuItem helpMenuItem = new JMenuItem("Help");
+        JMenuItem helpMenuItem = new JMenuItem(rb.getString("thirdMenu.field2"));
         helpMenuItem.addActionListener(listener);
-        JMenuItem executeScriptMenuItem = new JMenuItem("Execute script");
+        JMenuItem executeScriptMenuItem = new JMenuItem(rb.getString("thirdMenu.field3"));
         executeScriptMenuItem.addActionListener(listener);
 
         otherMenu.add(infoMenuItem);
@@ -152,8 +147,8 @@ public class MainView extends JFrame {
 
         add(panel, BorderLayout.SOUTH);
 
-        loginButton = new JButton("Log in");
-        registerButton = new JButton("Register");
+        loginButton = new JButton(rb.getString("downPlane.login"));
+        registerButton = new JButton(rb.getString("downPlane.register"));
         usernameLabel = new JLabel("1234");
         setUsernameLabelVisible();
         panel.add(usernameLabel);

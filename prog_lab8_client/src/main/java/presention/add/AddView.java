@@ -55,7 +55,7 @@ public class AddView extends JFrame {
         addModeComboBox.addItemListener(e -> setMode((AddMode) e.getItem()));
 
         Map<String, JComponent> stringJComponentMap = new LinkedHashMap<>();
-        stringJComponentMap.put("Name:", nameTextField);
+        stringJComponentMap.put("", nameTextField);
         stringJComponentMap.put("X Coordinate:", xCoordTextField);
         stringJComponentMap.put("Y Coordinate:", yCoordTextField);
         stringJComponentMap.put("Area:", areaTextField);
