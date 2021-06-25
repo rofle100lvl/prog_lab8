@@ -58,6 +58,8 @@ public class MainView extends JFrame {
         updateMenuItem.addActionListener(listener);
         JMenuItem remove = new JMenuItem("Remove");
         remove.addActionListener(listener);
+        JMenuItem removeHead = new JMenuItem("Remove head");
+        removeHead.addActionListener(listener);
         JMenuItem clearMenuItem = new JMenuItem("Clear");
         clearMenuItem.addActionListener(listener);
 
@@ -66,6 +68,7 @@ public class MainView extends JFrame {
         editMenu.add(updateMenuItem);
         editMenu.addSeparator();
         editMenu.add(remove);
+        editMenu.add(removeHead);
         editMenu.addSeparator();
         editMenu.add(clearMenuItem);
 
