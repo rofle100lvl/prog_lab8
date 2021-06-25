@@ -214,6 +214,7 @@ public class Model implements TableModel {
     public void login(String login, String password)  {
         try {
             service.login(login, password);
+            view.setLogin(login);
         } catch (LimitOfReconnectionsException exception) {
             exception.printStackTrace();
         }
@@ -222,6 +223,7 @@ public class Model implements TableModel {
     public void register(String login, String password) {
         try {
             service.register(login, password);
+            view.setLogin(login);
         } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
             limitOfReconnectionsException.printStackTrace();
         }

@@ -1,0 +1,33 @@
+
+L
+java:S1444	"/Make this "public static REMOVE_AT" field final(Şâ×„8ˆÌŠ¤/
+O
+java:S1444
+"2Make this "public static REMOVE_BY_ID" field final(ÎÀÑù8ˆÌŠ¤/
+r
+java:S1104	"UMake REMOVE_AT a static final constant or non-public and provide accessors if needed.(Şâ×„8ŠÌŠ¤/
+u
+java:S1104
+"XMake REMOVE_BY_ID a static final constant or non-public and provide accessors if needed.(ÎÀÑù8ŠÌŠ¤/
+r
+java:S1450"URemove the "button" field and declare it as a local variable in the relevant methods.(‡÷Ö‡8‹ÌŠ¤/
+q
+java:S1450"TRemove the "label" field and declare it as a local variable in the relevant methods.(ßë·²8‹ÌŠ¤/
+q
+java:S3008	"TRename this field "REMOVE_AT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Şâ×„8ÌŠ¤/
+t
+java:S3008
+"WRename this field "REMOVE_BY_ID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÀÑù8ÌŠ¤/
+]	java:S125"<This block of commented-out lines of code should be removed.(ÜãÍ¿şÿÿÿÿ8’ÌŠ¤/
+X	java:S125"<This block of commented-out lines of code should be removed.(ĞİÍ8”ÌŠ¤/
+i
+java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Òœ Ğ8–ÌŠ¤/
+]	java:S125"<This block of commented-out lines of code should be removed.(Î˜íĞÿÿÿÿÿ8˜ÌŠ¤/
+T
+java:S1135-"2Complete the task associated to this TODO comment.(……‰Œıÿÿÿÿ8™ÌŠ¤/
+T
+java:S11352"2Complete the task associated to this TODO comment.(……‰Œıÿÿÿÿ8šÌŠ¤/
+O
+java:S11358"2Complete the task associated to this TODO comment.(µ¿ö²8›ÌŠ¤/
+X	java:S125>"<This block of commented-out lines of code should be removed.(÷êÌ…8›ÌŠ¤/
+]	java:S125N"<This block of commented-out lines of code should be removed.(Áóªüÿÿÿÿ8œÌŠ¤/

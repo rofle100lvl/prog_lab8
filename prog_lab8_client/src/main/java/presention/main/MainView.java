@@ -9,6 +9,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Locale;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
 public class MainView extends JFrame {
     private JTabbedPane tabbedPane;
@@ -16,6 +21,13 @@ public class MainView extends JFrame {
     private JLabel usernameLabel;
     private JButton loginButton;
     private JButton registerButton;
+    Locale ru = new Locale("ru", "RU");
+    Locale chr = new Locale("chr");
+    Locale sp = new Locale("sp");
+    Locale po = new Locale("po");
+    File ru_Loc = new File("bundles/GuiLabels_ru.properties");
+    File po_Loc = new File("bundles/GuiLabels_po.properties");
+    ResourceBundle rb;
 
     public void setUsernameLabel(JLabel usernameLabel) {
         this.usernameLabel = usernameLabel;
@@ -26,6 +38,8 @@ public class MainView extends JFrame {
     private boolean isLogin = false;
 
     public void init(ActionListener listener, Model model) {
+        rb = ResourceBundle.getBundle("bundles.GuiLabels", ru);
+        System.out.println(rb.getString("login"));
         setTitle("Storage of Study Groups");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -145,6 +159,10 @@ public class MainView extends JFrame {
         panel.add(usernameLabel);
         panel.add(loginButton);
         panel.add(registerButton);
+    }
+
+    public void setLogin(String login) {
+        usernameLabel.setText(login);
     }
 
     public void setUsernameLabelVisible() {

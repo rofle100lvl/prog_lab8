@@ -1,0 +1,17 @@
+
+c
+java:S2184h"FCast one of the operands of this multiplication operation to a "long".(­Î­8•É½¤/
+r	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÍÅĞøÿÿÿÿ8–É½¤/
+q
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(´Õ¯í8˜É½¤/
+p	java:S116"ORename this field "PORT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıçˆ°úÿÿÿÿ8šÉ½¤/
+U	java:S106)"9Replace this use of System.out or System.err by a logger.(æ¨‡ğ8¡É½¤/
+Z	java:S1064"9Replace this use of System.out or System.err by a logger.(øŒÿÚúÿÿÿÿ8¢É½¤/
+D	java:S108X")Either remove or fill this block of code.(¿Á¾]8¦É½¤/
+Z	java:S106\"9Replace this use of System.out or System.err by a logger.(†‘òöûÿÿÿÿ8¦É½¤/
+Z	java:S106c"9Replace this use of System.out or System.err by a logger.(»Üåÿÿÿÿÿ8§É½¤/
+{
+java:S2142j"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(´í­Œ8§É½¤/
+U	java:S106g"9Replace this use of System.out or System.err by a logger.(©æßÀ8¨É½¤/
+E	java:S108j")Either remove or fill this block of code.(´í­Œ8¨É½¤/
+Z	java:S106|"9Replace this use of System.out or System.err by a logger.(éŞÆ®úÿÿÿÿ8®É½¤/
