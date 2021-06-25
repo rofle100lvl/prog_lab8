@@ -1,45 +1,61 @@
 package presention;
 
 import Services.Service;
-import commandDescriptions.*;
+import com.sun.org.apache.xpath.internal.operations.Number;
 import exceptions.LimitOfReconnectionsException;
 import model.Flat;
 import model.Furnish;
-import model.House;
 import presention.main.MainView;
-import utils.Connector;
-import utils.ConnectorFabric;
-import utils.Consts;
-import utils.Response;
 
 import javax.swing.*;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.math.BigDecimal;
+import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Model implements TableModel {
     private ArrayList<Flat> flats = new ArrayList<>();
+    private ArrayList<Flat> flatsBuffer = new ArrayList<>();
     private MainView view;
     private Service service;
     boolean filterMode;
 
-//    {
-//        flats.add(new Flat());
-//        flats.add(new Flat());
-//        flats.add(new Flat());
-//        flats.add(new Flat());
-//    }
+    private ArrayList<Predicate<Flat>> filters = new ArrayList<>();
+    private Comparator<Flat> comparator;
+    private Comparator<Flat> prevComparator;
+
+    private static ArrayList<Comparator<Flat>> comparators;
+
+    static {
+        comparators = new ArrayList<>();
+        comparators.add(Comparator.comparingInt(Flat::getId));
+        comparators.add(Comparator.comparing(Flat::getName));
+        comparators.add(Comparator.comparingDouble((flat) -> flat.getCoordinates().getX()));
+        comparators.add(Comparator.comparingDouble((flat) -> flat.getCoordinates().getY()));
+        comparators.add(Comparator.comparingDouble(Flat::getArea));
+        comparators.add(Comparator.comparingLong(Flat::getNumberOfRooms));
+        comparators.add(Comparator.comparingInt(Flat::getPrice));
+        comparators.add(Comparator.comparing(flat -> flat.getBalcony().toString()));
+        comparators.add(Comparator.comparing(flat -> flat.getFurnish().toString()));
+        comparators.add(Comparator.comparing(flat -> flat.getHouse().getName()));
+        comparators.add(Comparator.comparingLong(flat -> flat.getHouse().getYear()));
+        comparators.add(Comparator.comparingInt(flat -> flat.getHouse().getNumberOfFloors()));
+        comparators.add(Comparator.comparingInt(flat -> flat.getHouse().getNumberOfFlatsOnFloor()));
+        comparators.add(Comparator.comparingLong(flat -> flat.getHouse().getNumberOfLifts()));
+
+    }
 
     public Model(MainView view) {
         this.view = view;
         service = new Service(response -> {
             flats = response.getFlats();
             view.repaint();
-            System.out.println(flats);
+            sendToBuffer();
+            System.out.println(flatsBuffer);
         }, response -> {
             JOptionPane.showMessageDialog(view,response.getRequestText());
             if (response.getCode() == 244) view.setLoginMode(true);
@@ -48,7 +64,7 @@ public class Model implements TableModel {
 
     @Override
     public int getRowCount() {
-        return flats.size();
+        return flatsBuffer.size();
     }
 
     @Override
@@ -129,7 +145,7 @@ public class Model implements TableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Flat flat = flats.get(rowIndex);
+        Flat flat = flatsBuffer.get(rowIndex);
         switch (columnIndex) {
             case 0:
                 return flat.getId();
@@ -176,6 +192,23 @@ public class Model implements TableModel {
     @Override
     public void removeTableModelListener(TableModelListener l) {
 
+    }
+
+    public void addComparatorByColumn(int columnIndex) {
+        addComparator(comparators.get(columnIndex));
+    }
+
+    public void addComparator(Comparator<Flat> comparator) {
+        if (Objects.equals(prevComparator, comparator)) {
+            this.comparator = this.comparator.reversed();
+        } else {
+            this.comparator = Objects.nonNull(this.comparator) ? comparator.thenComparing(this.comparator) : comparator;
+        }
+        prevComparator = comparator;
+    }
+
+    public void addFilter(Predicate<Flat> filter) {
+        filters.add(filter);
     }
 
     public void login(String login, String password)  {
@@ -246,12 +279,23 @@ public class Model implements TableModel {
             limitOfReconnectionsException.printStackTrace();
         }
     }
+
     public void help()  {
         try {
             service.help();
         } catch (LimitOfReconnectionsException limitOfReconnectionsException) {
             limitOfReconnectionsException.printStackTrace();
         }
+    }
+
+    public void sendToBuffer() {
+        flatsBuffer = flats.stream().filter(filters.stream().reduce(x -> true, Predicate::and)).collect(Collectors.toCollection(ArrayList::new));
+        flatsBuffer.sort(comparator);
+    }
+
+    public void setComparator(Comparator<Flat> comparator) {
+        System.out.println(comparator);
+        this.comparator = comparator;
     }
 }
 

@@ -1,5 +1,6 @@
 package presention.main;
 
+import presention.Model;
 import presention.tablePresentation.TableView;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ public class MainView extends JFrame {
 
     private boolean isLogin = false;
 
-    public void init(ActionListener listener, TableModel model) {
+    public void init(ActionListener listener, Model model) {
         setTitle("Storage of Study Groups");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -33,7 +34,7 @@ public class MainView extends JFrame {
         setVisible(true);
     }
 
-    private void configureTabs(TableModel model) {
+    private void configureTabs(Model model) {
         // init TabbedPane
         tabbedPane = new JTabbedPane();
 
@@ -42,6 +43,19 @@ public class MainView extends JFrame {
         tableView.init(model);
         tabbedPane.add("Table presentation", tableView);
 
+        tableView.getTable().getTableHeader().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
+                    System.out.println(2);
+                } else {
+                    int index = tableView.getTable().columnAtPoint(e.getPoint());
+                    model.addComparatorByColumn(index);
+                    model.sendToBuffer();
+                    repaint();
+                }
+            }
+        });
         // Add TabbedPane
         add(tabbedPane, BorderLayout.CENTER);
     }
@@ -76,14 +90,13 @@ public class MainView extends JFrame {
 
         // Add statistic
         JMenu statsMenu = new JMenu("Statistic");
-        JMenuItem filterLessThanNumberOfRoomsCommandDescription = new JMenuItem("Filter less than number of rooms");
+        JMenuItem filterLessThanNumberOfRoomsCommandDescription = new JMenuItem("Filter");
         filterLessThanNumberOfRoomsCommandDescription.addActionListener(listener);
-        JMenuItem head = new JMenuItem("Head");
-        head.addActionListener(listener);
         JMenuItem printFieldDescending= new JMenuItem("Print field descending");
         printFieldDescending.addActionListener(listener);
-        JMenuItem printUniquePrice = new JMenu("Print unique price");
+        JMenuItem printUniquePrice = new JMenuItem("Print unique price");
         printUniquePrice.addActionListener(listener);
+
         statsMenu.add(printFieldDescending);
         statsMenu.add(printUniquePrice);
         statsMenu.addSeparator();
