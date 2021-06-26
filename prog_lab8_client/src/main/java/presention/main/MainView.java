@@ -13,6 +13,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileReader;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
@@ -38,6 +40,8 @@ public class MainView extends JFrame implements LocaleChangeable {
     JMenuItem helpMenuItem;
     JMenuItem executeScriptMenuItem;
     JMenuItem languages;
+
+
 
     public void setUsernameLabel(JLabel usernameLabel) {
         this.usernameLabel = usernameLabel;
@@ -75,7 +79,6 @@ public class MainView extends JFrame implements LocaleChangeable {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
-                    System.out.println(2);
                 } else {
                     int index = tableView.getTable().columnAtPoint(e.getPoint());
                     model.addComparatorByColumn(index);
@@ -145,18 +148,18 @@ public class MainView extends JFrame implements LocaleChangeable {
         executeScriptMenuItem.addActionListener(listener);
         languages = new JMenu();
 
-        JMenuItem эспаньела = new JMenuItem("Эспаньела");
-        эспаньела.addActionListener(listener);
-        languages.add(эспаньела);
-        JMenuItem хорватский = new JMenuItem("Хорватский");
-        хорватский.addActionListener(listener);
-        languages.add(хорватский);
-        JMenuItem польский = new JMenuItem("Польский");
-        польский.addActionListener(listener);
-        languages.add(польский);
-        JMenuItem русский = new JMenuItem("Русский");
-        русский.addActionListener(listener);
-        languages.add(русский);
+        JMenuItem spanish = new JMenuItem("español");
+        spanish.addActionListener(listener);
+        languages.add(spanish);
+        JMenuItem croat = new JMenuItem("Hrvatski");
+        croat.addActionListener(listener);
+        languages.add(croat);
+        JMenuItem portuguese = new JMenuItem("Português");
+        portuguese.addActionListener(listener);
+        languages.add(portuguese);
+        JMenuItem russian = new JMenuItem("Русский");
+        russian.addActionListener(listener);
+        languages.add(russian);
         JMenuItem english = new JMenuItem("English");
         english.addActionListener(listener);
         languages.add(english);
@@ -275,9 +278,11 @@ public class MainView extends JFrame implements LocaleChangeable {
         infoMenuItem.setText(resourceBundle.getString("thirdMenu.field1"));
         helpMenuItem.setText(resourceBundle.getString("thirdMenu.field2"));
         executeScriptMenuItem.setText(resourceBundle.getString("thirdMenu.field3"));
+        languages.setText(resourceBundle.getString("thirdMenu.field4"));
         registerButton.setText((resourceBundle.getString("downPlane.register")));
         loginButton.setText(resourceBundle.getString("downPlane.login"));
         logoutButton.setText(resourceBundle.getString("downPlane.logout"));
+
         pack();
     }
 
@@ -286,4 +291,6 @@ public class MainView extends JFrame implements LocaleChangeable {
         super.repaint();
         interactiveView.repaint();
     }
+
+
 }

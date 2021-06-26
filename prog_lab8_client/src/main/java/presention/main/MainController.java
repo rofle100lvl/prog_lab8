@@ -25,15 +25,12 @@ public class MainController {
     private MainView view;
     private Model model;
     private LocaleChanger localeChanger;
-    private Locale ru = new Locale("ru", "RU");
-    private Locale chr = new Locale("chr");
-    private Locale sp = new Locale("sp", "SP");
-    private Locale po = new Locale("po");
-    ResourceBundle rb;
+
 
     public MainController(MainView view, Model model) {
         localeChanger = new LocaleChanger("bundles.gui");
         localeChanger.addSubscriber(view);
+        localeChanger.addSubscriber(view.getTableView());
 
         this.view = view;
         this.model = model;
@@ -62,7 +59,7 @@ public class MainController {
                 public void mouseReleased(MouseEvent e) {
                     super.mouseReleased(e);
                     logout();
-                    
+
 
                 }
             });
@@ -96,10 +93,15 @@ public class MainController {
             FilterLessNumberOfRoomsController controller =
                     new FilterLessNumberOfRoomsController(filterLessNumberOfRoomsView, model);
             controller.presentView();
-        } else if("Log Out".equals(e.getActionCommand())) {
-            view.setLoginMode(false);
+        } else if("español".equals(e.getActionCommand())) {
+            localeChanger.changLocale(new Locale("sp", "SP"));
+        } else if("Hrvatski".equals(e.getActionCommand())) {
+            localeChanger.changLocale(new Locale("cr", "CR"));
+        } else if("English".equals(e.getActionCommand())) {
+            localeChanger.changLocale(new Locale("en", "EN"));
+        } else if("Русский".equals(e.getActionCommand())) {
+            localeChanger.changLocale(new Locale("ru", "RU"));
         }
-        System.out.println(e.getActionCommand());
     }
 
     private void logout() {

@@ -14,7 +14,6 @@ public class CanvasForInteractive extends Canvas {
     @Override
     public void paint(Graphics g) {
         Font newFont = new Font("Dialog", Font.BOLD, 12);
-        System.out.println(newFont.getFontName(new Locale("ru")));
         g.setFont(newFont);
         for (int i = 0; i < model.getRowCount(); i++) {
             g.setColor(model.getColor(i));

@@ -40,7 +40,6 @@ public class InteractiveView extends JPanel {
 
     @Override
     public void repaint() {
-        System.out.println("sosi");
         if (Objects.nonNull(canvas)) {
             canvas.repaint();
         }

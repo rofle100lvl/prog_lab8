@@ -58,25 +58,22 @@ public class Model implements TableModel, InteractiveModel {
     public Model(MainView view) {
         this.view = view;
         service = new Service(response -> {
+            if (response.getCode() == 244) view.setLoginMode(true);
             flats = response.getFlats();
             view.repaint();
             sendToBuffer();
-            System.out.println(flatsBuffer);
         }, response -> {
             JOptionPane.showMessageDialog(view,response.getRequestText());
-            if (response.getCode() == 244) view.setLoginMode(true);
         });
     }
 
     @Override
     public double getX(int index) {
-        System.out.println(flatsBuffer.get(index).getCoordinates());
         return (flatsBuffer.get(index).getCoordinates().getX() - minX) / (maxX - minX);
     }
 
     @Override
     public double getY(int index) {
-        System.out.println(maxY);
         return (flatsBuffer.get(index).getCoordinates().getY() - minY) / (maxY - minY);
     }
 
@@ -342,9 +339,5 @@ public class Model implements TableModel, InteractiveModel {
         });
     }
 
-    public void setComparator(Comparator<Flat> comparator) {
-        System.out.println(comparator);
-        this.comparator = comparator;
-    }
 }
 

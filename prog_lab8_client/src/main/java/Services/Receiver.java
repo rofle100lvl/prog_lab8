@@ -32,8 +32,9 @@ public class Receiver implements Callable<Response> {
                 if (Objects.nonNull(serverResponse.getFlats())) {
                     //Перерисовываем таблицу
                     answerWithCollection.accept(serverResponse);
-                    answerWithoutCollection.accept(serverResponse);
-                    System.out.println(serverResponse.getFlats());
+                    if(serverResponse.getCode() == 244) {
+                        answerWithoutCollection.accept(serverResponse);
+                    }
                 }
                 else {
                     //Выводим окошко с респонсом
