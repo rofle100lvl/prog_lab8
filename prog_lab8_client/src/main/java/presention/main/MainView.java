@@ -1,6 +1,7 @@
 package presention.main;
 
 import presention.Model;
+import presention.interactivePresentation.InteractiveView;
 import presention.tablePresentation.TableView;
 
 import javax.swing.*;
@@ -32,6 +33,7 @@ public class MainView extends JFrame {
     }
 
     private TableView tableView;
+    private InteractiveView interactiveView;
 
     private boolean isLogin = false;
 
@@ -74,6 +76,11 @@ public class MainView extends JFrame {
                 }
             }
         });
+        // Add interactive tab
+        interactiveView = new InteractiveView();
+        interactiveView.init(model);
+        tabbedPane.add("Interactive presentation", interactiveView);
+
         // Add TabbedPane
         add(tabbedPane, BorderLayout.CENTER);
     }
@@ -175,8 +182,14 @@ public class MainView extends JFrame {
     }
 
     public void setTableEnabled() {
-        if (isLogin) tableView.loginMode();
-        else tableView.logoutMode();
+        if (isLogin) {
+            tableView.loginMode();
+            interactiveView.loginMode();
+        }
+        else {
+            tableView.logoutMode();
+            interactiveView.logoutMode();
+        }
     }
 
     public void setLoginMode(boolean login) {
