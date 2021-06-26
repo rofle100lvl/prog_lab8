@@ -22,6 +22,7 @@ public class MainView extends JFrame implements LocaleChangeable {
     private JMenuBar menuBar;
     private JLabel usernameLabel;
     private JButton loginButton;
+    private JButton logoutButton;
     private JButton registerButton;
     JMenu editMenu;
     JMenuItem addMenuItem;
@@ -163,12 +164,17 @@ public class MainView extends JFrame implements LocaleChangeable {
         add(panel, BorderLayout.SOUTH);
 
         loginButton = new JButton();
+        logoutButton = new JButton();
         registerButton = new JButton();
         usernameLabel = new JLabel("1234");
+
         setUsernameLabelVisible();
+
         panel.add(usernameLabel);
         panel.add(loginButton);
+        panel.add(logoutButton);
         panel.add(registerButton);
+        setLoginMode(false);
     }
 
     public void setLogin(String login) {
@@ -198,11 +204,12 @@ public class MainView extends JFrame implements LocaleChangeable {
 
     public void setLoginMode(boolean login) {
         isLogin = login;
-        registerButton.setVisible(false);
+        registerButton.setVisible(!isLogin);
+        loginButton.setVisible(!isLogin);
+        logoutButton.setVisible(isLogin);
         setMenuBarEnabled();
         setTableEnabled();
         setUsernameLabelVisible();
-        loginButton.setText(("Re:login"));
     }
 
     // Getters
@@ -217,6 +224,10 @@ public class MainView extends JFrame implements LocaleChangeable {
 
     public JButton getLoginButton() {
         return loginButton;
+    }
+
+    public JButton getLogoutButton() {
+        return logoutButton;
     }
 
     public JButton getRegisterButton() {
@@ -245,8 +256,8 @@ public class MainView extends JFrame implements LocaleChangeable {
         helpMenuItem.setText(resourceBundle.getString("thirdMenu.field2"));
         executeScriptMenuItem.setText(resourceBundle.getString("thirdMenu.field3"));
         registerButton.setText((resourceBundle.getString("downPlane.register")));
-        if (!isLogin) loginButton.setText(resourceBundle.getString("downPlane.login"));
-        else loginButton.setText(resourceBundle.getString("downPlane.relogin"));
+        loginButton.setText(resourceBundle.getString("downPlane.login"));
+        logoutButton.setText(resourceBundle.getString("downPlane.logout"));
         pack();
     }
 }

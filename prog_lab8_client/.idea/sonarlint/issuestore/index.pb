@@ -90,8 +90,6 @@ R
 _
 /src/main/java/presention/remove/RemoveMode.java,6\d\6d550c402ec9bacffc17919c832fee983a15fecf
 e
-5src/main/java/presention/update/UpdateController.java,3\f\3f097727613c41e44c5f57c6f700890fa9f5cae6
-e
 5src/main/java/presention/remove/RemoveController.java,8\f\8f05510bacdb56f58e28ec568fc20b6d3b37a152
 v
 Fsrc/main/java/presention/filter/FilterLessNumberOfRoomsController.java,7\8\78e2870eaf3bdce112061f048980a78a7b2b33f9
@@ -99,8 +97,6 @@ p
 @src/main/java/presention/filter/FilterLessNumberOfRoomsView.java,2\3\234cfc8594c424ba7e0c3dcd88dc6815a680e5b4
 G
 src/main/java/Main.java,e\4\e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
-S
-#src/main/java/presention/Model.java,6\f\6fad0fcc6967e5361b5fdbe3f36b9ea8f7948da7
 i
 9src/main/java/presention/tablePresentation/TableView.java,9\3\93842fa100b368390d5673dde27bd2bd7ce81397
 ^

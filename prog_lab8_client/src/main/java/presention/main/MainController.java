@@ -49,7 +49,7 @@ public class MainController {
                     login();
                 }
             });
-            localeChanger.changLocale(new Locale("ru","RU"));
+            localeChanger.changLocale(new Locale("en","EN"));
             view.getRegisterButton().addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseReleased(MouseEvent e) {
@@ -57,6 +57,16 @@ public class MainController {
                     register();
                 }
             });
+            view.getLogoutButton().addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    super.mouseReleased(e);
+                    logout();
+                    
+
+                }
+            });
+
         });
     }
 
@@ -86,7 +96,14 @@ public class MainController {
             FilterLessNumberOfRoomsController controller =
                     new FilterLessNumberOfRoomsController(filterLessNumberOfRoomsView, model);
             controller.presentView();
+        } else if("Log Out".equals(e.getActionCommand())) {
+            view.setLoginMode(false);
         }
+        System.out.println(e.getActionCommand());
+    }
+
+    private void logout() {
+        view.setLoginMode(false);
     }
 
     private void login() {

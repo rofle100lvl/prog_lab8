@@ -29,23 +29,28 @@ public class AddController {
     }
 
     private void add() {
-        Flat flat = new Flat();
-        flat.setName(view.getNameTextField().getText());
-        flat.setCoordinates(new Coordinates(Float.parseFloat(view.getxCoordTextField().getText()),
-                Float.parseFloat(view.getyCoordTextField().getText())));
-        flat.setArea(Float.parseFloat(view.getAreaTextField().getText()));
-        flat.setNumberOfRooms(Long.parseLong(view.getNumberOfRoomsTextField().getText()));
-        flat.setPrice(Integer.parseInt(view.getPriceTextField().getText()));
-        flat.setBalcony(view.getBalconyCheckBox().isSelected());
-        flat.setFurnish((Furnish) view.getFurnishComboBox().getSelectedItem());
-        House house = new House();
-        house.setName(view.getHouseNameTextField().getText());
-        house.setYear(Long.parseLong(view.getHouseYearTextField().getText()));
-        house.setNumberOfFloors(Integer.parseInt(view.getHouseNumberOfFloorsTextField().getText()));
-        house.setNumberOfFlatsOnFloor(Integer.parseInt(view.getHouseNumberOfFlatsOnFloorTextField().getText()));
-        house.setNumberOfLifts(Long.parseLong(view.getHouseNumberOfLifts().getText()));
-        flat.setHouse(house);
-        model.add(flat);
-        view.dispose();
+        try {
+            Flat flat = new Flat();
+            flat.setName(view.getNameTextField().getText());
+            flat.setCoordinates(new Coordinates(Float.parseFloat(view.getxCoordTextField().getText()), Float.parseFloat(view.getyCoordTextField().getText())));
+            flat.setArea(Float.parseFloat(view.getAreaTextField().getText()));
+            flat.setNumberOfRooms(Long.parseLong(view.getNumberOfRoomsTextField().getText()));
+            flat.setPrice(Integer.parseInt(view.getPriceTextField().getText()));
+            flat.setBalcony(view.getBalconyCheckBox().isSelected());
+            flat.setFurnish((Furnish) view.getFurnishComboBox().getSelectedItem());
+            House house = new House();
+            house.setName(view.getHouseNameTextField().getText());
+            house.setYear(Long.parseLong(view.getHouseYearTextField().getText()));
+            house.setNumberOfFloors(Integer.parseInt(view.getHouseNumberOfFloorsTextField().getText()));
+            house.setNumberOfFlatsOnFloor(Integer.parseInt(view.getHouseNumberOfFlatsOnFloorTextField().getText()));
+            house.setNumberOfLifts(Long.parseLong(view.getHouseNumberOfLifts().getText()));
+            flat.setHouse(house);
+            model.add(flat);
+            view.dispose();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(view,"Ошибка, вы ввели строку в поле, где должно быть число");
+        }
+
+
     }
 }
