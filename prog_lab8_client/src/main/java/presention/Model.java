@@ -5,24 +5,30 @@ import com.sun.org.apache.xpath.internal.operations.Number;
 import exceptions.LimitOfReconnectionsException;
 import model.Flat;
 import model.Furnish;
+import presention.interactivePresentation.InteractiveModel;
 import presention.main.MainView;
 
 import javax.swing.*;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
+import java.awt.*;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Model implements TableModel {
+public class Model implements TableModel, InteractiveModel {
     private ArrayList<Flat> flats = new ArrayList<>();
     private ArrayList<Flat> flatsBuffer = new ArrayList<>();
     private MainView view;
     private Service service;
     boolean filterMode;
+
+    private Float minX, maxX, minY, maxY;
+    private Float maxSize;
+    private Color[] colors = new Color[]{Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.PINK};
 
     private ArrayList<Predicate<Flat>> filters = new ArrayList<>();
     private Comparator<Flat> comparator;
@@ -60,6 +66,33 @@ public class Model implements TableModel {
             JOptionPane.showMessageDialog(view,response.getRequestText());
             if (response.getCode() == 244) view.setLoginMode(true);
         });
+    }
+
+    @Override
+    public double getX(int index) {
+        System.out.println(flatsBuffer.get(index).getCoordinates());
+        return (flatsBuffer.get(index).getCoordinates().getX() - minX) / (maxX - minX);
+    }
+
+    @Override
+    public double getY(int index) {
+        System.out.println(maxY);
+        return (flatsBuffer.get(index).getCoordinates().getY() - minY) / (maxY - minY);
+    }
+
+    @Override
+    public double getRadius(int index) {
+        return flatsBuffer.get(index).getArea() / maxSize;
+    }
+
+    @Override
+    public String getName(int index) {
+        return flatsBuffer.get(index).getName();
+    }
+
+    @Override
+    public Color getColor(int index) {
+        return colors[flatsBuffer.get(index).getId() % colors.length];
     }
 
     @Override
@@ -293,6 +326,20 @@ public class Model implements TableModel {
     public void sendToBuffer() {
         flatsBuffer = flats.stream().filter(filters.stream().reduce(x -> true, Predicate::and)).collect(Collectors.toCollection(ArrayList::new));
         flatsBuffer.sort(comparator);
+
+        flatsBuffer.forEach(flat -> {
+            if (minX == null || minX > flat.getCoordinates().getX()) {
+                minX = flat.getCoordinates().getX();
+            } if (minY == null || minY > flat.getCoordinates().getY()) {
+                minY = flat.getCoordinates().getX();
+            } if (maxX == null || maxX < flat.getCoordinates().getX()) {
+                maxX = flat.getCoordinates().getX();
+            } if (maxY == null || maxY < flat.getCoordinates().getY()) {
+                maxY = flat.getCoordinates().getX();
+            } if (maxSize == null || maxSize < flat.getArea()) {
+                maxSize = flat.getArea();
+            }
+        });
     }
 
     public void setComparator(Comparator<Flat> comparator) {
