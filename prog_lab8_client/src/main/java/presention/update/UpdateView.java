@@ -204,5 +204,6 @@ public class UpdateView extends JFrame implements LocaleChangeable {
         numberOfFlatsOnFloorLabel.setText(resourceBundle.getString("update.field13"));
         numberOfLiftsLabel.setText(resourceBundle.getString("update.field14"));
         button.setText(resourceBundle.getString("update.confirm"));
+        pack();
     }
 }

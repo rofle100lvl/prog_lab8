@@ -79,5 +79,6 @@ public class LoginView extends JFrame implements LocaleChangeable {
         loginLabel.setText(resourceBundle.getString("loginView.getLogin"));
         passwordLabel.setText(resourceBundle.getString("loginView.getPassword"));
         button.setText(resourceBundle.getString("loginView.getAccept"));
+        pack();
     }
 }

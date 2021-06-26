@@ -213,9 +213,6 @@ public class AddView extends JFrame implements LocaleChangeable {
         numberOfFlatsOnFloorLabel.setText(resourceBundle.getString("add.field12"));
         numberOfLiftsLabel.setText(resourceBundle.getString("add.field13"));
         button.setText(resourceBundle.getString("add.confirm"));
-
-
-
-
+        pack();
     }
 }

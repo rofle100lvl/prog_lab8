@@ -90,7 +90,7 @@ public class RemoveView extends JFrame implements LocaleChangeable {
         setTitle(resourceBundle.getString("remove.title"));
         label.setText(resourceBundle.getString("remove.field1"));
         button.setText(resourceBundle.getString("remove.confirm"));
-
+        pack();
     }
 
 //    private void setMode(RemoveMode removeMode) {

@@ -243,5 +243,6 @@ public class MainView extends JFrame implements LocaleChangeable {
         executeScriptMenuItem.setText(resourceBundle.getString("thirdMenu.field3"));
         loginButton.setText(resourceBundle.getString("downPlane.login"));
         registerButton.setText((resourceBundle.getString("downPlane.register")));
+        pack();
     }
 }
