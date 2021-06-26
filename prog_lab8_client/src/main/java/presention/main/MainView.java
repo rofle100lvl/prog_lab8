@@ -37,6 +37,7 @@ public class MainView extends JFrame implements LocaleChangeable {
     JMenuItem infoMenuItem;
     JMenuItem helpMenuItem;
     JMenuItem executeScriptMenuItem;
+    JMenuItem languages;
 
     public void setUsernameLabel(JLabel usernameLabel) {
         this.usernameLabel = usernameLabel;
@@ -142,11 +143,30 @@ public class MainView extends JFrame implements LocaleChangeable {
         helpMenuItem.addActionListener(listener);
         executeScriptMenuItem = new JMenuItem();
         executeScriptMenuItem.addActionListener(listener);
+        languages = new JMenu();
+
+        JMenuItem эспаньела = new JMenuItem("Эспаньела");
+        эспаньела.addActionListener(listener);
+        languages.add(эспаньела);
+        JMenuItem хорватский = new JMenuItem("Хорватский");
+        хорватский.addActionListener(listener);
+        languages.add(хорватский);
+        JMenuItem польский = new JMenuItem("Польский");
+        польский.addActionListener(listener);
+        languages.add(польский);
+        JMenuItem русский = new JMenuItem("Русский");
+        русский.addActionListener(listener);
+        languages.add(русский);
+        JMenuItem english = new JMenuItem("English");
+        english.addActionListener(listener);
+        languages.add(english);
 
         otherMenu.add(infoMenuItem);
         otherMenu.add(helpMenuItem);
         otherMenu.addSeparator();
         otherMenu.add(executeScriptMenuItem);
+        otherMenu.addSeparator();
+        otherMenu.add(languages);
 
         menuBar.add(otherMenu);
 
@@ -259,5 +279,11 @@ public class MainView extends JFrame implements LocaleChangeable {
         loginButton.setText(resourceBundle.getString("downPlane.login"));
         logoutButton.setText(resourceBundle.getString("downPlane.logout"));
         pack();
+    }
+
+    @Override
+    public void repaint() {
+        super.repaint();
+        interactiveView.repaint();
     }
 }

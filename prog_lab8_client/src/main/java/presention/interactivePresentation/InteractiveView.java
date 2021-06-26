@@ -2,9 +2,11 @@ package presention.interactivePresentation;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class InteractiveView extends JPanel {
     private CardLayout layout;
+    Canvas canvas;
 
     public InteractiveView() {
         super(new GridLayout());
@@ -17,7 +19,7 @@ public class InteractiveView extends JPanel {
         JPanel panel1 = new JPanel(new BorderLayout());
         JPanel panel2 = new JPanel();
 
-        Canvas canvas = new CanvasForInteractive(model);
+        canvas = new CanvasForInteractive(model);
         canvas.setSize(panel1.getSize());
         panel1.add(canvas);
 
@@ -34,6 +36,15 @@ public class InteractiveView extends JPanel {
 
     public void logoutMode() {
         layout.show(this, "logout");
+    }
+
+    @Override
+    public void repaint() {
+        System.out.println("sosi");
+        if (Objects.nonNull(canvas)) {
+            canvas.repaint();
+        }
+        super.repaint();
     }
 
 }
