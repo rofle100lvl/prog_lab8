@@ -85,14 +85,6 @@ O
 src/main/java/utils/Consts.java,d\c\dcdf0ea93a5445083f046b3e3a86c1b51402998e
 T
 $src/main/java/model/Coordinates.java,1\8\1890bf0e30a3ea6e674bc9ba3899d8344be26e4b
-]
--src/main/java/presention/login/LoginMode.java,7\6\76e9ac73ba918675772c19d3860d47209ecdb1d1
-Y
-)src/main/java/presention/add/AddMode.java,3\2\322a43629ec1afa50aef0e44322ac1337e46fc5d
-_
-/src/main/java/presention/add/AddController.java,1\7\17bc600df28f5ac798b1f1de9a8266c3e7da43a4
-_
-/src/main/java/presention/update/UpdateView.java,8\1\812d74d7781ca837407f703862ba99fde0af6b39
 R
 "src/main/java/utils/Connector.java,c\1\c18f68ffbe61425ca236724b8389c2005887c2b2
 _
@@ -103,3 +95,11 @@ e
 5src/main/java/presention/remove/RemoveController.java,8\f\8f05510bacdb56f58e28ec568fc20b6d3b37a152
 v
 Fsrc/main/java/presention/filter/FilterLessNumberOfRoomsController.java,7\8\78e2870eaf3bdce112061f048980a78a7b2b33f9
+p
+@src/main/java/presention/filter/FilterLessNumberOfRoomsView.java,2\3\234cfc8594c424ba7e0c3dcd88dc6815a680e5b4
+G
+src/main/java/Main.java,e\4\e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
+S
+#src/main/java/presention/Model.java,6\f\6fad0fcc6967e5361b5fdbe3f36b9ea8f7948da7
+i
+9src/main/java/presention/tablePresentation/TableView.java,9\3\93842fa100b368390d5673dde27bd2bd7ce81397

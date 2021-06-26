@@ -1,16 +1,16 @@
 package presention.update;
 
 import model.Furnish;
+import presention.LocaleChangeable;
+import presention.LocaleChanger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class UpdateView extends JFrame {
+public class UpdateView extends JFrame implements LocaleChangeable {
     private JTextField idTextField;
     private JTextField nameTextField;
     private JTextField xCoordTextField;
@@ -26,7 +26,26 @@ public class UpdateView extends JFrame {
     private JTextField houseNumberOfFlatsOnFloorTextField;
     private JTextField houseNumberOfLifts;
     private JButton button;
+    private LocaleChanger localeChanger;
+    private JLabel idLabel;
+    private JLabel nameLabel;
+    private JLabel xCoordLabel;
+    private JLabel yCoordLabel;
+    private JLabel areaLabel;
+    private JLabel numberOfRoomsLabel;
+    private JLabel priceLabel;
+    private JLabel balconyLabel;
+    private JLabel furnishLabel;
+    private JLabel houseNameLabel;
+    private JLabel houseYearLabel;
+    private JLabel numberOfFloorsLabel;
+    private JLabel numberOfFlatsOnFloorLabel;
+    private JLabel numberOfLiftsLabel;
+    private JLabel modeLabel;
 
+    public UpdateView(LocaleChanger localeChanger) {
+        this.localeChanger = localeChanger;
+    }
 
     public void init(ActionListener listener) {
         setTitle("Update");
@@ -38,41 +57,56 @@ public class UpdateView extends JFrame {
         GridBagConstraints constraints = new GridBagConstraints();
 
         idTextField = new JTextField(10);
+        idLabel = new JLabel();
         nameTextField = new JTextField(10);
+        nameLabel = new JLabel();
         xCoordTextField = new JTextField(10);
+        xCoordLabel =new JLabel();
         yCoordTextField = new JTextField(10);
+        yCoordLabel = new JLabel();
         areaTextField = new JTextField(10);
+        areaLabel = new JLabel();
         numberOfRoomsTextField = new JTextField(10);
+        numberOfRoomsLabel = new JLabel();
         priceTextField = new JTextField(10);
-        balconyCheckBox = new JCheckBox("Has balcony");
+        priceLabel = new JLabel();
+        balconyCheckBox = new JCheckBox();
+        balconyLabel = new JLabel();
         furnishComboBox = new JComboBox<>(Furnish.values());
+        furnishLabel = new JLabel();
         houseNameTextField = new JTextField(10);
+        houseNameLabel = new JLabel();
         houseYearTextField = new JTextField(10);
+        houseYearLabel = new JLabel();
         houseNumberOfFloorsTextField = new JTextField(10);
+        numberOfFloorsLabel = new JLabel();
         houseNumberOfFlatsOnFloorTextField = new JTextField(10);
+        numberOfFlatsOnFloorLabel = new JLabel();
         houseNumberOfLifts = new JTextField(10);
-        Map<String, JComponent> stringJComponentMap = new LinkedHashMap<>();
-        stringJComponentMap.put("Id:", idTextField);
-        stringJComponentMap.put("Name:", nameTextField);
-        stringJComponentMap.put("X Coordinate:", xCoordTextField);
-        stringJComponentMap.put("Y Coordinate:", yCoordTextField);
-        stringJComponentMap.put("Area:", areaTextField);
-        stringJComponentMap.put("Number of rooms:", numberOfRoomsTextField);
-        stringJComponentMap.put("Price:", priceTextField);
-        stringJComponentMap.put("Balcony:", balconyCheckBox);
-        stringJComponentMap.put("Furnish:", furnishComboBox);
-        stringJComponentMap.put("Name of House:", houseNameTextField);
-        stringJComponentMap.put("Year of House:", houseYearTextField);
-        stringJComponentMap.put("Number of floors:", houseNumberOfFloorsTextField);
-        stringJComponentMap.put("Numbers of flats:", houseNumberOfFlatsOnFloorTextField);
-        stringJComponentMap.put("Number of Lifts:", houseNumberOfLifts);
+        numberOfLiftsLabel = new JLabel();
+
+        Map<JLabel, JComponent> stringJComponentMap = new LinkedHashMap<>();
+        stringJComponentMap.put(idLabel, idTextField);
+        stringJComponentMap.put(nameLabel,nameTextField);
+        stringJComponentMap.put(xCoordLabel,xCoordTextField);
+        stringJComponentMap.put(yCoordLabel, yCoordTextField);
+        stringJComponentMap.put(areaLabel, areaTextField);
+        stringJComponentMap.put(numberOfRoomsLabel, numberOfRoomsTextField);
+        stringJComponentMap.put(priceLabel, priceTextField);
+        stringJComponentMap.put(balconyLabel, balconyCheckBox);
+        stringJComponentMap.put(furnishLabel, furnishComboBox);
+        stringJComponentMap.put(houseNameLabel, houseNameTextField);
+        stringJComponentMap.put(houseYearLabel, houseYearTextField);
+        stringJComponentMap.put(numberOfFloorsLabel, houseNumberOfFloorsTextField);
+        stringJComponentMap.put(numberOfFlatsOnFloorLabel, houseNumberOfFlatsOnFloorTextField);
+        stringJComponentMap.put(numberOfLiftsLabel, houseNumberOfLifts);
 
         constraints.insets = new Insets(5, 10, 5, 10);
         AtomicInteger i = new AtomicInteger(0);
-        stringJComponentMap.forEach((string, comp) -> {
+        stringJComponentMap.forEach((jLabel, comp) -> {
             constraints.gridx = 0;
             constraints.gridy = i.incrementAndGet();
-            add(new JLabel(string), constraints);
+            add(jLabel, constraints);
             constraints.gridx = 1;
             add(comp, constraints);
         });
@@ -80,7 +114,7 @@ public class UpdateView extends JFrame {
         constraints.gridy = i.incrementAndGet();
         constraints.insets = new Insets(5, 10, 10, 10);
         constraints.gridwidth = 2;
-        button = new JButton("Apply");
+        button = new JButton();
         button.addActionListener(listener);
         add(button, constraints);
 
@@ -88,6 +122,7 @@ public class UpdateView extends JFrame {
 
         pack();
         setVisible(true);
+        localeChanger.addSubscriber(this);
     }
 
     public JTextField getIdTextField() {
@@ -148,5 +183,26 @@ public class UpdateView extends JFrame {
 
     public JButton getButton() {
         return button;
+    }
+
+    @Override
+    public void localeDidChange(ResourceBundle resourceBundle, Locale locale) {
+        setTitle(resourceBundle.getString("update.title"));
+        idLabel.setText(resourceBundle.getString("update.field1"));
+        nameLabel.setText(resourceBundle.getString("update.field2"));
+        xCoordLabel.setText(resourceBundle.getString("update.field3"));
+        yCoordLabel.setText(resourceBundle.getString("update.field4"));
+        areaLabel.setText(resourceBundle.getString("update.field5"));
+        numberOfRoomsLabel.setText(resourceBundle.getString("update.field6"));
+        priceLabel.setText(resourceBundle.getString("update.field7"));
+        balconyLabel.setText(resourceBundle.getString("update.field8"));
+        balconyCheckBox.setText(resourceBundle.getString("update.field8Checked"));
+        furnishLabel.setText(resourceBundle.getString("update.field9"));
+        houseNameLabel.setText(resourceBundle.getString("update.field10"));
+        houseYearLabel.setText(resourceBundle.getString("update.field11"));
+        numberOfFloorsLabel.setText(resourceBundle.getString("update.field12"));
+        numberOfFlatsOnFloorLabel.setText(resourceBundle.getString("update.field13"));
+        numberOfLiftsLabel.setText(resourceBundle.getString("update.field14"));
+        button.setText(resourceBundle.getString("update.confirm"));
     }
 }

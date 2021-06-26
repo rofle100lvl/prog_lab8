@@ -1,0 +1,8 @@
+
+7
+java:S1220""Move this file to a named package.8œêš‚¤/
+P
+java:S1128"3Remove this unused import 'presention.add.AddView'.(‘†µ…8žêš‚¤/
+N
+java:S1128	"1Remove this unused import 'java.util.Comparator'.(î¹ó¹8Ïšã¤¤/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Ë×É±8Úšã¤¤/

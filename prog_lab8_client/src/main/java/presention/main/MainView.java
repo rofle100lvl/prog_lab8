@@ -1,5 +1,6 @@
 package presention.main;
 
+import presention.LocaleChangeable;
 import presention.Model;
 import presention.interactivePresentation.InteractiveView;
 import presention.tablePresentation.TableView;
@@ -16,17 +17,25 @@ import java.util.Locale;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
-public class MainView extends JFrame {
+public class MainView extends JFrame implements LocaleChangeable {
     private JTabbedPane tabbedPane;
     private JMenuBar menuBar;
     private JLabel usernameLabel;
     private JButton loginButton;
     private JButton registerButton;
-    Locale ru = new Locale("ru", "RU");
-    Locale chr = new Locale("chr");
-    Locale sp = new Locale("sp", "SP");
-    Locale po = new Locale("po");
-    ResourceBundle rb;
+    JMenu editMenu;
+    JMenuItem addMenuItem;
+    JMenuItem updateMenuItem;
+    JMenuItem removeMenuItem;
+    JMenuItem clearMenuItem;
+    JMenu statsMenu;
+    JMenuItem filterLessThanNumberOfRoomsCommandDescription;
+    JMenuItem printFieldDescending;
+    JMenuItem printUniquePrice;
+    JMenu otherMenu;
+    JMenuItem infoMenuItem;
+    JMenuItem helpMenuItem;
+    JMenuItem executeScriptMenuItem;
 
     public void setUsernameLabel(JLabel usernameLabel) {
         this.usernameLabel = usernameLabel;
@@ -38,8 +47,7 @@ public class MainView extends JFrame {
     private boolean isLogin = false;
 
     public void init(ActionListener listener, Model model) {
-        rb = ResourceBundle.getBundle("bundles.gui");
-        setTitle(rb.getString("titleName"));
+        setTitle("");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -59,7 +67,7 @@ public class MainView extends JFrame {
         // Add table tab
         tableView = new TableView();
         tableView.init(model);
-        tabbedPane.add(rb.getString("tablePresentation"), tableView);
+        tabbedPane.add(tableView);
 
         tableView.getTable().getTableHeader().addMouseListener(new MouseAdapter() {
             @Override
@@ -88,33 +96,33 @@ public class MainView extends JFrame {
         menuBar = new JMenuBar();
 
         // Add edit menu
-        JMenu editMenu = new JMenu(rb.getString("firstMenu.name"));
-        JMenuItem addMenuItem = new JMenuItem(rb.getString("firstMenu.field1"));
+        editMenu = new JMenu();
+        addMenuItem = new JMenuItem();
         addMenuItem.addActionListener(listener);
-        JMenuItem updateMenuItem = new JMenuItem(rb.getString("firstMenu.field2"));
+        updateMenuItem = new JMenuItem();
         updateMenuItem.addActionListener(listener);
-        JMenuItem remove = new JMenuItem(rb.getString("firstMenu.field3"));
-        remove.addActionListener(listener);
-        JMenuItem clearMenuItem = new JMenuItem(rb.getString("firstMenu.field4"));
+        removeMenuItem = new JMenuItem();
+        removeMenuItem.addActionListener(listener);
+        clearMenuItem = new JMenuItem();
         clearMenuItem.addActionListener(listener);
 
         editMenu.add(addMenuItem);
         editMenu.addSeparator();
         editMenu.add(updateMenuItem);
         editMenu.addSeparator();
-        editMenu.add(remove);
+        editMenu.add(removeMenuItem);
         editMenu.addSeparator();
         editMenu.add(clearMenuItem);
 
         menuBar.add(editMenu);
 
         // Add statistic
-        JMenu statsMenu = new JMenu(rb.getString("secondMenu.name"));
-        JMenuItem filterLessThanNumberOfRoomsCommandDescription = new JMenuItem(rb.getString("secondMenu.field1"));
+        statsMenu = new JMenu();
+        filterLessThanNumberOfRoomsCommandDescription = new JMenuItem();
         filterLessThanNumberOfRoomsCommandDescription.addActionListener(listener);
-        JMenuItem printFieldDescending= new JMenuItem(rb.getString("secondMenu.field2"));
+        printFieldDescending = new JMenuItem();
         printFieldDescending.addActionListener(listener);
-        JMenuItem printUniquePrice = new JMenuItem(rb.getString("secondMenu.field3"));
+        printUniquePrice = new JMenuItem();
         printUniquePrice.addActionListener(listener);
 
         statsMenu.add(printFieldDescending);
@@ -125,13 +133,13 @@ public class MainView extends JFrame {
         menuBar.add(statsMenu);
 
         // Add other
-        JMenu otherMenu = new JMenu(rb.getString("thirdMenu.name"));
+        otherMenu = new JMenu();
 
-        JMenuItem infoMenuItem = new JMenuItem(rb.getString("thirdMenu.field1"));
+        infoMenuItem = new JMenuItem();
         infoMenuItem.addActionListener(listener);
-        JMenuItem helpMenuItem = new JMenuItem(rb.getString("thirdMenu.field2"));
+        helpMenuItem = new JMenuItem();
         helpMenuItem.addActionListener(listener);
-        JMenuItem executeScriptMenuItem = new JMenuItem(rb.getString("thirdMenu.field3"));
+        executeScriptMenuItem = new JMenuItem();
         executeScriptMenuItem.addActionListener(listener);
 
         otherMenu.add(infoMenuItem);
@@ -154,8 +162,8 @@ public class MainView extends JFrame {
 
         add(panel, BorderLayout.SOUTH);
 
-        loginButton = new JButton(rb.getString("downPlane.login"));
-        registerButton = new JButton(rb.getString("downPlane.register"));
+        loginButton = new JButton();
+        registerButton = new JButton();
         usernameLabel = new JLabel("1234");
         setUsernameLabelVisible();
         panel.add(usernameLabel);
@@ -214,5 +222,26 @@ public class MainView extends JFrame {
 
     public TableView getTableView() {
         return tableView;
+    }
+
+    @Override
+    public void localeDidChange(ResourceBundle resourceBundle, Locale locale) {
+        setTitle(resourceBundle.getString("titleName"));
+        tabbedPane.setTitleAt(0, resourceBundle.getString("tablePresentation"));
+        editMenu.setText(resourceBundle.getString("firstMenu.name"));
+        addMenuItem.setText(resourceBundle.getString("firstMenu.field1"));
+        updateMenuItem.setText(resourceBundle.getString("firstMenu.field2"));
+        removeMenuItem.setText(resourceBundle.getString("firstMenu.field3"));
+        clearMenuItem.setText(resourceBundle.getString("firstMenu.field4"));
+        statsMenu.setText(resourceBundle.getString("secondMenu.name"));
+        filterLessThanNumberOfRoomsCommandDescription.setText(resourceBundle.getString("secondMenu.field1"));
+        printFieldDescending.setText(resourceBundle.getString("secondMenu.field2"));
+        printUniquePrice.setText(resourceBundle.getString("secondMenu.field3"));
+        otherMenu.setText(resourceBundle.getString("thirdMenu.name"));
+        infoMenuItem.setText(resourceBundle.getString("thirdMenu.field1"));
+        helpMenuItem.setText(resourceBundle.getString("thirdMenu.field2"));
+        executeScriptMenuItem.setText(resourceBundle.getString("thirdMenu.field3"));
+        loginButton.setText(resourceBundle.getString("downPlane.login"));
+        registerButton.setText((resourceBundle.getString("downPlane.register")));
     }
 }

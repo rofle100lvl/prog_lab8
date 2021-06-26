@@ -21,6 +21,10 @@ public class LocaleChanger {
 
     public void addSubscriber(LocaleChangeable localeChangeable) {
         subscribers.add(new WeakReference<LocaleChangeable>(localeChangeable));
+        if (Objects.nonNull(locale)) {
+            ResourceBundle resourceBundle = ResourceBundle.getBundle(path, locale);
+            localeChangeable.localeDidChange(resourceBundle, locale);
+        }
     }
 
     private void notifySubscribers() {

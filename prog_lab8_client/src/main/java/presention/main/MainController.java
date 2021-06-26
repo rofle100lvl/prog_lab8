@@ -1,5 +1,6 @@
 package presention.main;
 
+import presention.LocaleChanger;
 import presention.Model;
 import presention.add.AddController;
 import presention.add.AddView;
@@ -17,12 +18,23 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class MainController {
     private MainView view;
     private Model model;
+    private LocaleChanger localeChanger;
+    private Locale ru = new Locale("ru", "RU");
+    private Locale chr = new Locale("chr");
+    private Locale sp = new Locale("sp", "SP");
+    private Locale po = new Locale("po");
+    ResourceBundle rb;
 
     public MainController(MainView view, Model model) {
+        localeChanger = new LocaleChanger("bundles.gui");
+        localeChanger.addSubscriber(view);
+
         this.view = view;
         this.model = model;
     }
@@ -37,6 +49,7 @@ public class MainController {
                     login();
                 }
             });
+            localeChanger.changLocale(new Locale("ru","RU"));
             view.getRegisterButton().addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseReleased(MouseEvent e) {
@@ -51,15 +64,15 @@ public class MainController {
 
     public void menuItemDidSelect(ActionEvent e) {
         if ("Remove".equals(e.getActionCommand())) {
-            RemoveView removeView = new RemoveView();
+            RemoveView removeView = new RemoveView(localeChanger);
             RemoveController controller = new RemoveController(removeView, model);
             controller.presentView();
         } else if ("Add".equals(e.getActionCommand())) {
-            AddView addView = new AddView();
+            AddView addView = new AddView(localeChanger);
             AddController controller = new AddController(addView, model);
             controller.presentView();
         } else if ("Update".equals(e.getActionCommand())) {
-            UpdateView addView = new UpdateView();
+            UpdateView addView = new UpdateView(localeChanger);
             UpdateController controller = new UpdateController(addView, model);
             controller.presentView();
         } else if("Clear".equals(e.getActionCommand())) {
@@ -77,13 +90,13 @@ public class MainController {
     }
 
     private void login() {
-        LoginView loginView = new LoginView(LoginMode.LOGIN);
+        LoginView loginView = new LoginView(LoginMode.LOGIN, localeChanger);
         LoginController loginController = new LoginController(loginView, model);
         loginController.presentView();
     }
 
     private void register() {
-        LoginView loginView = new LoginView(LoginMode.REGISTER);
+        LoginView loginView = new LoginView(LoginMode.REGISTER, localeChanger);
         LoginController loginController = new LoginController(loginView, model);
         loginController.presentView();
     }
