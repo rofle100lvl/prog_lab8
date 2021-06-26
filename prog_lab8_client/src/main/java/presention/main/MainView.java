@@ -178,6 +178,7 @@ public class MainView extends JFrame implements LocaleChangeable {
     public void setUsernameLabelVisible() {
         usernameLabel.setVisible(isLogin);
     }
+
     public void setMenuBarEnabled() {
         for (MenuElement subElement : menuBar.getSubElements()) {
             ((JMenu) subElement).setEnabled(isLogin);
@@ -197,9 +198,11 @@ public class MainView extends JFrame implements LocaleChangeable {
 
     public void setLoginMode(boolean login) {
         isLogin = login;
+        registerButton.setVisible(false);
         setMenuBarEnabled();
         setTableEnabled();
         setUsernameLabelVisible();
+        loginButton.setText(("Re:login"));
     }
 
     // Getters
@@ -241,7 +244,9 @@ public class MainView extends JFrame implements LocaleChangeable {
         infoMenuItem.setText(resourceBundle.getString("thirdMenu.field1"));
         helpMenuItem.setText(resourceBundle.getString("thirdMenu.field2"));
         executeScriptMenuItem.setText(resourceBundle.getString("thirdMenu.field3"));
-        loginButton.setText(resourceBundle.getString("downPlane.login"));
         registerButton.setText((resourceBundle.getString("downPlane.register")));
+        if (!isLogin) loginButton.setText(resourceBundle.getString("downPlane.login"));
+        else loginButton.setText(resourceBundle.getString("downPlane.relogin"));
+
     }
 }
