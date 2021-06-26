@@ -103,3 +103,7 @@ S
 #src/main/java/presention/Model.java,6\f\6fad0fcc6967e5361b5fdbe3f36b9ea8f7948da7
 i
 9src/main/java/presention/tablePresentation/TableView.java,9\3\93842fa100b368390d5673dde27bd2bd7ce81397
+^
+.src/main/java/presention/LocaleChangeable.java,8\6\869b2c2c8a4f0b7a9fbce17d7c32072accdf3c20
+[
++src/main/java/presention/LocaleChanger.java,1\8\1847926aaefc35cda398123a4cc508d1f6c4c754
